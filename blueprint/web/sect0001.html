@@ -1,0 +1,1203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>
+  MathJax = { 
+    tex: {
+		    inlineMath: [['$','$'], ['\\(','\\)']]
+	} }
+</script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+</script>
+<meta name="generator" content="plasTeX" />
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>The One-Period Binomial Model for European Contingent Claims</title>
+<link rel="prev" href="index.html" title="ECC Binomial Model" />
+<link rel="up" href="index.html" title="ECC Binomial Model" />
+<link rel="stylesheet" href="styles/theme-white.css" />
+<link rel="stylesheet" href="styles/amsthm.css" />
+<link rel="stylesheet" href="styles/showmore.css" />
+<link rel="stylesheet" href="styles/blueprint.css" />
+<link rel="stylesheet" href="styles/extra_styles.css" />
+</head>
+
+<body>
+<header>
+<svg  id="toc-toggle" class="icon icon-list-numbered "><use xlink:href="symbol-defs.svg#icon-list-numbered"></use></svg>
+<h1 id="doc_title"><a href="index.html">ECC Binomial Model</a></h1>
+</header>
+
+<div class="wrapper">
+<nav class="toc">
+<ul class="sub-toc-0">
+<li class=" active current">
+  <a href="sect0001.html"><span class="toc_ref">1</span> <span class="toc_entry">The One-Period Binomial Model for European Contingent Claims</span></a>
+  <span class="expand-toc">▼</span>
+  <ul class="sub-toc-1 active">
+     <li class="">
+  <a href="sect0001.html#a0000000003"><span class="toc_ref">1.1</span> <span class="toc_entry">The Market</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000000004"><span class="toc_ref">1.2</span> <span class="toc_entry">Asset Prices</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000000006"><span class="toc_ref">1.3</span> <span class="toc_entry">Arbitrage</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000000014"><span class="toc_ref">1.4</span> <span class="toc_entry">European Contingent Claims</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000000015"><span class="toc_ref">1.5</span> <span class="toc_entry">Replicating Strategies</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000000017"><span class="toc_ref">1.6</span> <span class="toc_entry">Pricing</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li ><a href="dep_graph_document.html">Dependency graph</a></li>
+</ul>
+</nav>
+
+<div class="content">
+<div class="content-wrapper">
+
+
+<div class="main-text">
+<h1 id="a0000000002">1 The One-Period Binomial Model for European Contingent Claims</h1>
+<h1 id="a0000000003">1.1 The Market</h1>
+<div class="definition_thmwrapper theorem-style-definition" id="def:parameters">
+  <div class="definition_thmheading">
+    <span class="definition_thmcaption">
+    Definition
+    </span>
+    <span class="definition_thmlabel">1</span>
+    <div class="thm_header_extras">
+
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0001.html#def:parameters">#</a>
+    
+    
+    
+        </div>
+  </div>
+  <div class="definition_thmcontent">
+  <p>  The initial <em>market parameters</em> are defined by </p>
+<ul class="itemize">
+  <li><p>\(S_0 {\gt} 0\), the initial price of the risky asset; </p>
+</li>
+  <li><p>\(u {\gt} 0\), the up factor; </p>
+</li>
+  <li><p>\(d {\gt} 0\), the down factor; </p>
+</li>
+  <li><p>\(r {\gt} -1\) such that the risk-free asset grows by a factor of \(1 + r\) at each time step. </p>
+</li>
+</ul>
+
+  </div>
+</div>
+<div class="definition_thmwrapper theorem-style-definition" id="def:sample_space">
+  <div class="definition_thmheading">
+    <span class="definition_thmcaption">
+    Definition
+    </span>
+    <span class="definition_thmlabel">2</span>
+    <div class="thm_header_extras">
+
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0001.html#def:sample_space">#</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0001.html#def:parameters">Definition 1</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+        </div>
+  </div>
+  <div class="definition_thmcontent">
+  <p>  The sample space for the ECC binomial model is \(\Omega = \{ u, d\} \), representing a single up or down move. We apply the probability measure \(P\) such that \(P(\{ u\} ) {\gt} 0\) and \(P(\{ d\} ) {\gt} 0\). </p>
+
+  </div>
+</div>
+<div class="definition_thmwrapper theorem-style-definition" id="def:filtration">
+  <div class="definition_thmheading">
+    <span class="definition_thmcaption">
+    Definition
+    </span>
+    <span class="definition_thmlabel">3</span>
+    <div class="thm_header_extras">
+
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0001.html#def:filtration">#</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0001.html#def:sample_space">Definition 2</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+        </div>
+  </div>
+  <div class="definition_thmcontent">
+  <p>  The filtration for the ECC binomial model is the natural filtration, defined as \(\mathcal{F}^0_0 = \{ \emptyset , \Omega \} \) and \(\mathcal{F}^0_1 = 2^\Omega \). </p>
+
+  </div>
+</div>
+<h1 id="a0000000004">1.2 Asset Prices</h1>
+<div class="definition_thmwrapper theorem-style-definition" id="def:bond">
+  <div class="definition_thmheading">
+    <span class="definition_thmcaption">
+    Definition
+    </span>
+    <span class="definition_thmlabel">4</span>
+    <div class="thm_header_extras">
+
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0001.html#def:bond">#</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0001.html#def:parameters">Definition 1</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+        </div>
+  </div>
+  <div class="definition_thmcontent">
+  <p>  The <em>bond</em> is the risk-free asset, with price process defined by \(B_0 = 1\) and \(B_1 = 1 + r\). </p>
+
+  </div>
+</div>
+<div class="definition_thmwrapper theorem-style-definition" id="def:stock">
+  <div class="definition_thmheading">
+    <span class="definition_thmcaption">
+    Definition
+    </span>
+    <span class="definition_thmlabel">5</span>
+    <div class="thm_header_extras">
+
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0001.html#def:stock">#</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0001.html#def:parameters">Definition 1</a></li>
+          
+          <li><a href="sect0001.html#def:sample_space">Definition 2</a></li>
+          
+          <li><a href="sect0001.html#def:filtration">Definition 3</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+        </div>
+  </div>
+  <div class="definition_thmcontent">
+  <p>  The <em>stock</em> is the risky asset, with price process defined by \(S_0\) at time 0 and </p>
+<div class="displaymath" id="a0000000005">
+  \[  S_1(\omega ) = \begin{cases}  u S_0 &  \text{if } \omega = u, \\ d S_0 &  \text{if } \omega = d. \end{cases}  \]
+</div>
+
+  </div>
+</div>
+<div class="definition_thmwrapper theorem-style-definition" id="def:trading_strategy">
+  <div class="definition_thmheading">
+    <span class="definition_thmcaption">
+    Definition
+    </span>
+    <span class="definition_thmlabel">6</span>
+    <div class="thm_header_extras">
+
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0001.html#def:trading_strategy">#</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0001.html#def:filtration">Definition 3</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+        </div>
+  </div>
+  <div class="definition_thmcontent">
+  <p>  A <em>trading strategy</em> is a pair of \(\mathcal{F}^0\)-adapted processes \(\varphi = (\alpha , \beta )\), where \(\alpha _t\) represents the number of shares of the stock held at time \(t\) and \(\beta _t\) represents the number of shares of the bond held at time \(t\). The value of the trading strategy at time \(t\) is given by \(V_t(\varphi ) = \alpha _t S_t + \beta _t B_t\). </p>
+
+  </div>
+</div>
+<h1 id="a0000000006">1.3 Arbitrage</h1>
+<div class="definition_thmwrapper theorem-style-definition" id="def:arbitrage">
+  <div class="definition_thmheading">
+    <span class="definition_thmcaption">
+    Definition
+    </span>
+    <span class="definition_thmlabel">7</span>
+    <div class="thm_header_extras">
+
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0001.html#def:arbitrage">#</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0001.html#def:trading_strategy">Definition 6</a></li>
+          
+          <li><a href="sect0001.html#def:bond">Definition 4</a></li>
+          
+          <li><a href="sect0001.html#def:stock">Definition 5</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+        </div>
+  </div>
+  <div class="definition_thmcontent">
+  <p>  There exists <em>arbitrage</em> or equivalently an <em>arbitrage opportunity</em> if there exists a trading strategy \(\varphi = (\alpha , \beta )\) such that </p>
+<ul class="itemize">
+  <li><p>\(V_0(\varphi ) = 0\); </p>
+</li>
+  <li><p>\(V_1(\varphi ) \geq 0\); </p>
+</li>
+  <li><p>\(E[V_1(\varphi )] {\gt} 0\). </p>
+</li>
+</ul>
+
+  </div>
+</div>
+<div class="definition_thmwrapper theorem-style-definition" id="def:arbitrage_free">
+  <div class="definition_thmheading">
+    <span class="definition_thmcaption">
+    Definition
+    </span>
+    <span class="definition_thmlabel">8</span>
+    <div class="thm_header_extras">
+
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0001.html#def:arbitrage_free">#</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0001.html#def:arbitrage">Definition 7</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+        </div>
+  </div>
+  <div class="definition_thmcontent">
+  <p>  The market is <em>arbitrage-free</em> if there are no arbitrage opportunities. </p>
+
+  </div>
+</div>
+<div class="definition_thmwrapper theorem-style-definition" id="def:risk_neutral_probability">
+  <div class="definition_thmheading">
+    <span class="definition_thmcaption">
+    Definition
+    </span>
+    <span class="definition_thmlabel">9</span>
+    <div class="thm_header_extras">
+
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0001.html#def:risk_neutral_probability">#</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0001.html#def:parameters">Definition 1</a></li>
+          
+          <li><a href="sect0001.html#def:sample_space">Definition 2</a></li>
+          
+          <li><a href="sect0001.html#def:filtration">Definition 3</a></li>
+          
+          <li><a href="sect0001.html#def:bond">Definition 4</a></li>
+          
+          <li><a href="sect0001.html#def:stock">Definition 5</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+        </div>
+  </div>
+  <div class="definition_thmcontent">
+  <p>  A <em>risk-neutral probability</em> is a probability measure \(q\) on \(\Omega \) such that </p>
+<div class="displaymath" id="a0000000007">
+  \[  q = \frac{(1 + r) - d}{u - d}  \]
+</div>
+
+  </div>
+</div>
+<div class="lemma_thmwrapper theorem-style-plain" id="lem:arbitrage_free_condition">
+  <div class="lemma_thmheading">
+    <span class="lemma_thmcaption">
+    Lemma
+    </span>
+    <span class="lemma_thmlabel">10</span>
+    <div class="thm_header_extras">
+
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0001.html#lem:arbitrage_free_condition">#</a>
+    
+    <a class="icon proof" href="sect0001.html#a0000000008"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0001.html#def:parameters">Definition 1</a></li>
+          
+          <li><a href="sect0001.html#def:arbitrage_free">Definition 8</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+        </div>
+  </div>
+  <div class="lemma_thmcontent">
+  <p>  The market is arbitrage-free if and only if \(d {\lt} 1 + r {\lt} u\). </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000008">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <ul class="itemize">
+  <li><p>(\(\Rightarrow \)) Assume the market is arbitrage-free. If \((1 + r) \leq d\), then define the trading strategy \(\varphi = (\alpha , \beta )\) by \(\alpha _0 = 1\), \(\beta _0 = -S_0\). Then \(V_0(\varphi ) = 0\) and \(V_1(\varphi ) = S_1 - S_0 (1 + r) \geq 0\) with positive probability. Thus, \(E[V_1(\varphi )] {\gt} 0\), which contradicts the assumption of no arbitrage. Similarly, if \((1 + r) \geq u\), then define the trading strategy \(\varphi = (\alpha , \beta )\) by \(\alpha _0 = -1\), \(\beta _0 = S_0\). Then \(V_0(\varphi ) = 0\) and \(V_1(\varphi ) = -S_1 + S_0 (1 + r) \geq 0\) with positive probability, leading to a similar contradiction. </p>
+</li>
+  <li><p>(\(\Leftarrow \)) Assume \(d {\lt} 1 + r {\lt} u\). Let \(\varphi = (\alpha , \beta )\) be any trading strategy such that \(V_0(\varphi ) = 0\). Then \(\beta _0 = -\alpha _0 S_0\) and </p>
+<div class="displaymath" id="a0000000009">
+  \[  V_1(\varphi ) = \begin{cases}  \alpha _0 S_1 + \beta _0 S_0 (1 + r) = \alpha _0 S_0(u - (1 + r)) &  \text{if } \omega = u, \\ \alpha _0 S_1 + \beta _0 S_0 (1 + r) = \alpha _0 S_0(d - (1 + r)) &  \text{if } \omega = d. \end{cases}  \]
+</div>
+<p> Since \(d {\lt} 1 + r {\lt} u\), we note that \(V_1(\varphi ) {\lt} 0\) with positive probability, so the market is arbitrage-free. </p>
+</li>
+</ul>
+
+  </div>
+</div>
+<div class="lemma_thmwrapper theorem-style-plain" id="lem:q_in_unit_interval">
+  <div class="lemma_thmheading">
+    <span class="lemma_thmcaption">
+    Lemma
+    </span>
+    <span class="lemma_thmlabel">11</span>
+    <div class="thm_header_extras">
+
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0001.html#lem:q_in_unit_interval">#</a>
+    
+    <a class="icon proof" href="sect0001.html#a0000000010"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0001.html#def:risk_neutral_probability">Definition 9</a></li>
+          
+          <li><a href="sect0001.html#def:parameters">Definition 1</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+        </div>
+  </div>
+  <div class="lemma_thmcontent">
+  <p>  The risk-neutral probability \(q\) is in the unit interval \((0, 1)\) if and only if \(d {\lt} 1 + r {\lt} u\). </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000010">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p>Follows directly from the definition of \(q\) and the condition \(d {\lt} 1 + r {\lt} u\). </p>
+
+  </div>
+</div>
+<div class="definition_thmwrapper theorem-style-definition" id="def:risk_neutral_measure">
+  <div class="definition_thmheading">
+    <span class="definition_thmcaption">
+    Definition
+    </span>
+    <span class="definition_thmlabel">12</span>
+    <div class="thm_header_extras">
+
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0001.html#def:risk_neutral_measure">#</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0001.html#def:risk_neutral_probability">Definition 9</a></li>
+          
+          <li><a href="sect0001.html#def:sample_space">Definition 2</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+        </div>
+  </div>
+  <div class="definition_thmcontent">
+  <p>  The <em>risk-neutral measure</em> \(Q\) on \(\Omega = \{ u, d\} \) is defined by \(Q(\{ u\} ) = q\) and \(Q(\{ d\} ) = 1 - q\). </p>
+
+  </div>
+</div>
+<div class="lemma_thmwrapper theorem-style-plain" id="lem:q_is_prob_measure">
+  <div class="lemma_thmheading">
+    <span class="lemma_thmcaption">
+    Lemma
+    </span>
+    <span class="lemma_thmlabel">13</span>
+    <div class="thm_header_extras">
+
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0001.html#lem:q_is_prob_measure">#</a>
+    
+    <a class="icon proof" href="sect0001.html#a0000000011"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0001.html#def:risk_neutral_measure">Definition 12</a></li>
+          
+          <li><a href="sect0001.html#lem:q_in_unit_interval">Lemma 11</a></li>
+          
+          <li><a href="sect0001.html#lem:q_in_unit_interval">Lemma 11</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+        </div>
+  </div>
+  <div class="lemma_thmcontent">
+  <p>  \(Q\) is a probability measure on \((\Omega , \mathcal{F})\). </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000011">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p> We have \(Q(\{ u\} ) + Q(\{ d\} ) = q + (1-q) = 1\) and both weights are in \((0,1)\) by <a href="sect0001.html#lem:q_in_unit_interval">11</a>. </p>
+
+  </div>
+</div>
+<div class="lemma_thmwrapper theorem-style-plain" id="lem:discounted_stock_expectation">
+  <div class="lemma_thmheading">
+    <span class="lemma_thmcaption">
+    Lemma
+    </span>
+    <span class="lemma_thmlabel">14</span>
+    <div class="thm_header_extras">
+
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0001.html#lem:discounted_stock_expectation">#</a>
+    
+    <a class="icon proof" href="sect0001.html#a0000000012"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0001.html#def:risk_neutral_measure">Definition 12</a></li>
+          
+          <li><a href="sect0001.html#def:stock">Definition 5</a></li>
+          
+          <li><a href="sect0001.html#def:bond">Definition 4</a></li>
+          
+          <li><a href="sect0001.html#def:risk_neutral_measure">Definition 12</a></li>
+          
+          <li><a href="sect0001.html#def:stock">Definition 5</a></li>
+          
+          <li><a href="sect0001.html#def:risk_neutral_probability">Definition 9</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+        </div>
+  </div>
+  <div class="lemma_thmcontent">
+  <p>  The discounted stock price satisfies </p>
+<div class="displaymath" id="a0000000013">
+  \[  E^Q\! \left[\frac{S_1}{1 + r}\right] = S_0.  \]
+</div>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000012">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p> Direct computation: \(E^Q[S_1/(1 + r)] = q \cdot u S_0 / (1 + r) + (1-q) \cdot d S_0 / (1 + r) = S_0(qu + (1-q)d)/(1 + r) = S_0 \cdot (1 + r)/(1 + r) = S_0\). </p>
+
+  </div>
+</div>
+<h1 id="a0000000014">1.4 European Contingent Claims</h1>
+<div class="definition_thmwrapper theorem-style-definition" id="def:ecc">
+  <div class="definition_thmheading">
+    <span class="definition_thmcaption">
+    Definition
+    </span>
+    <span class="definition_thmlabel">15</span>
+    <div class="thm_header_extras">
+
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0001.html#def:ecc">#</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0001.html#def:sample_space">Definition 2</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+        </div>
+  </div>
+  <div class="definition_thmcontent">
+  <p>  A <em>European Contingent Claim</em> (ECC) is a random variable \(\Phi : \Omega \to \mathbb {R}\). We write \(\Phi _u = \Phi (u)\) and \(\Phi _d = \Phi (d)\) for its two possible payoffs. </p>
+
+  </div>
+</div>
+<div class="example_thmwrapper theorem-style-plain" id="ex:european_call">
+  <div class="example_thmheading">
+    <span class="example_thmcaption">
+    Example
+    </span>
+    <span class="example_thmlabel">1.1</span>
+    <div class="thm_header_extras">
+
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0001.html#ex:european_call">#</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0001.html#def:ecc">Definition 15</a></li>
+          
+          <li><a href="sect0001.html#def:stock">Definition 5</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+        </div>
+  </div>
+  <div class="example_thmcontent">
+  <p>  The <em>European call option</em> with strike \(K {\gt} 0\) has payoffs \(\Phi _u = \max (uS_0 - K, 0)\) and \(\Phi _d = \max (dS_0 - K, 0)\). </p>
+
+  </div>
+</div>
+<div class="example_thmwrapper theorem-style-plain" id="ex:european_put">
+  <div class="example_thmheading">
+    <span class="example_thmcaption">
+    Example
+    </span>
+    <span class="example_thmlabel">1.2</span>
+    <div class="thm_header_extras">
+
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0001.html#ex:european_put">#</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0001.html#def:ecc">Definition 15</a></li>
+          
+          <li><a href="sect0001.html#def:stock">Definition 5</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+        </div>
+  </div>
+  <div class="example_thmcontent">
+  <p>  The <em>European put option</em> with strike \(K {\gt} 0\) has payoffs \(\Phi _u = \max (K - uS_0, 0)\) and \(\Phi _d = \max (K - dS_0, 0)\). </p>
+
+  </div>
+</div>
+<h1 id="a0000000015">1.5 Replicating Strategies</h1>
+<div class="definition_thmwrapper theorem-style-definition" id="def:replicating_strategy">
+  <div class="definition_thmheading">
+    <span class="definition_thmcaption">
+    Definition
+    </span>
+    <span class="definition_thmlabel">16</span>
+    <div class="thm_header_extras">
+
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0001.html#def:replicating_strategy">#</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0001.html#def:trading_strategy">Definition 6</a></li>
+          
+          <li><a href="sect0001.html#def:ecc">Definition 15</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+        </div>
+  </div>
+  <div class="definition_thmcontent">
+  <p>  A trading strategy \(\varphi = {\alpha , \beta }\) is a <em>replicating strategy</em> for an ECC \(\Phi \) if \(V_1(\varphi ) = \Phi \). </p>
+
+  </div>
+</div>
+<div class="theorem_thmwrapper theorem-style-plain" id="thm:replication_existence">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">17</span>
+    <div class="thm_header_extras">
+
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0001.html#thm:replication_existence">#</a>
+    
+    <a class="icon proof" href="sect0001.html#a0000000016"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0001.html#def:replicating_strategy">Definition 16</a></li>
+          
+          <li><a href="sect0001.html#lem:arbitrage_free_condition">Lemma 10</a></li>
+          
+          <li><a href="sect0001.html#def:replicating_strategy">Definition 16</a></li>
+          
+          <li><a href="sect0001.html#lem:arbitrage_free_condition">Lemma 10</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+        </div>
+  </div>
+  <div class="theorem_thmcontent">
+  <p>  Under the arbitrage-free condition, every ECC \(\Phi \) has a replicating strategy. </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000016">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p> The replication conditions form a linear system in \((\alpha , \beta )\) whose coefficient matrix has determinant \((u - d)S_0 (1 + r) \neq 0\) by <a href="sect0001.html#lem:arbitrage_free_condition">10</a>. Solving by substitution yields the stated formulas. </p>
+
+  </div>
+</div>
+<h1 id="a0000000017">1.6 Pricing</h1>
+<div class="theorem_thmwrapper theorem-style-plain" id="thm:risk_neutral_pricing">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">18</span>
+    <div class="thm_header_extras">
+
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0001.html#thm:risk_neutral_pricing">#</a>
+    
+    <a class="icon proof" href="sect0001.html#a0000000018"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0001.html#thm:replication_existence">Theorem 17</a></li>
+          
+          <li><a href="sect0001.html#def:risk_neutral_measure">Definition 12</a></li>
+          
+          <li><a href="sect0001.html#def:ecc">Definition 15</a></li>
+          
+          <li><a href="sect0001.html#def:trading_strategy">Definition 6</a></li>
+          
+          <li><a href="sect0001.html#thm:replication_existence">Theorem 17</a></li>
+          
+          <li><a href="sect0001.html#def:risk_neutral_probability">Definition 9</a></li>
+          
+          <li><a href="sect0001.html#def:risk_neutral_measure">Definition 12</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+        </div>
+  </div>
+  <div class="theorem_thmcontent">
+  <p>  The initial value of the unique replicating strategy of an ECC \(\Phi \) is </p>
+<div class="displaymath" id="a0000000019">
+  \[  V_0 = \frac{1}{1 + r}\, E^Q[\Phi ] = \frac{q\, \Phi _u + (1-q)\, \Phi _d}{1 + r}.  \]
+</div>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000018">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p> Substituting the formulas from <a href="sect0001.html#thm:replication_existence">17</a> into \(V_0 = \alpha S_0 + \beta \) and simplifying using \(q = ((1 + r) - d)/(u - d)\) yields \(V_0 = (q\Phi _u + (1-q)\Phi _d)/(1 + r) = E^Q[\Phi ]/(1 + r)\). </p>
+
+  </div>
+</div>
+<div class="corollary_thmwrapper theorem-style-plain" id="cor:call_price">
+  <div class="corollary_thmheading">
+    <span class="corollary_thmcaption">
+    Corollary
+    </span>
+    <span class="corollary_thmlabel">19</span>
+    <div class="thm_header_extras">
+
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0001.html#cor:call_price">#</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0001.html#thm:risk_neutral_pricing">Theorem 18</a></li>
+          
+          <li><a href="sect0001.html#ex:european_call">Example 1.1</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+        </div>
+  </div>
+  <div class="corollary_thmcontent">
+  <p>  The arbitrage-free price of a European call option with strike \(K\) is </p>
+<div class="displaymath" id="a0000000020">
+  \[  V_0 = \frac{q\max (uS_0-K,\, 0) + (1-q)\max (dS_0-K,\, 0)}{1 + r}.  \]
+</div>
+
+  </div>
+</div>
+<div class="corollary_thmwrapper theorem-style-plain" id="cor:put_call_parity">
+  <div class="corollary_thmheading">
+    <span class="corollary_thmcaption">
+    Corollary
+    </span>
+    <span class="corollary_thmlabel">20</span>
+    <div class="thm_header_extras">
+
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0001.html#cor:put_call_parity">#</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0001.html#thm:risk_neutral_pricing">Theorem 18</a></li>
+          
+          <li><a href="sect0001.html#ex:european_call">Example 1.1</a></li>
+          
+          <li><a href="sect0001.html#ex:european_put">Example 1.2</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+        </div>
+  </div>
+  <div class="corollary_thmcontent">
+  <p>  The prices of a European call \(C_0\) and put \(P_0\) with the same strike \(K\) satisfy <em>put-call parity</em>: </p>
+<div class="displaymath" id="a0000000021">
+  \[  C_0 - P_0 = S_0 - \frac{K}{1 + r}.  \]
+</div>
+
+  </div>
+</div>
+
+</div> <!--main-text -->
+</div> <!-- content-wrapper -->
+</div> <!-- content -->
+</div> <!-- wrapper -->
+
+<nav class="prev_up_next">
+  <svg  id="showmore-minus" class="icon icon-eye-minus showmore"><use xlink:href="symbol-defs.svg#icon-eye-minus"></use></svg>
+
+  <svg  id="showmore-plus" class="icon icon-eye-plus showmore"><use xlink:href="symbol-defs.svg#icon-eye-plus"></use></svg>
+
+  <a href="index.html" title="ECC Binomial Model"><svg  class="icon icon-arrow-left "><use xlink:href="symbol-defs.svg#icon-arrow-left"></use></svg>
+</a>
+  <a href="index.html" title="ECC Binomial Model"><svg  class="icon icon-arrow-up "><use xlink:href="symbol-defs.svg#icon-arrow-up"></use></svg>
+</a>
+</nav>
+
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/plastex.js"></script>
+<script type="text/javascript" src="js/svgxuse.js"></script>
+<script type="text/javascript" src="js/js.cookie.min.js"></script>
+<script type="text/javascript" src="js/showmore.js"></script>
+</body>
+</html>
