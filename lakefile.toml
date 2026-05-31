@@ -8,7 +8,6 @@ pp.unicode.fun = true # pretty-prints `fun a ↦ b`
 relaxedAutoImplicit = false
 weak.linter.mathlibStandardSet = true
 maxSynthPendingDepth = 3
-lintDriver = "MathlibLinter"
 
 
 [[require]]
@@ -22,6 +21,7 @@ rev = "d555f83"
 
 [[lean_lib]]
 name = "ECCBinomial"
+lintDriver = "MathlibLinter"
 
 [[require]]
 name = "mathlib"
