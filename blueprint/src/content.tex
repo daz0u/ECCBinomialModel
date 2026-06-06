@@ -24,14 +24,14 @@
 \end{definition}
 
 \begin{definition}\label{def:sample_space}
-    \lean{ECCBinomial.Ω}
+    \lean{ECCBinomial.Basic.Ω}
     \uses{def:parameters}
     The sample space for the ECC binomial model is $\Omega = \{u, d\}$, representing a single up or down move.
     We apply the probability measure $P$ such that $P(\{u\}) > 0$ and $P(\{d\}) > 0$.
 \end{definition}
 
 \begin{definition}\label{def:binomial_filtration}
-    \lean{ECCBinomial.binomial_filtration}
+    \lean{ECCBinomial.Basic.binomial_filtration}
     \leanok
     \uses{def:sample_space}
     The filtration for the ECC binomial model is the natural filtration, defined as $\mathcal{F}^0_0 = \{\emptyset, \Omega\}$ and $\mathcal{F}^0_1 = 2^\Omega$.
@@ -40,14 +40,14 @@
 \section{Asset Prices}
 
 \begin{definition}\label{def:bond}
-    \lean{ECCBinomial.B₀, ECCBinomial.B₁}
+    \lean{ECCBinomial.Basic.B₀, ECCBinomial.Basic.B₁}
     \leanok
     \uses{def:parameters}
     The \emph{bond} is the risk-free asset, with price process defined by $B_0 = 1$ and $B_1 = 1 + r$.
 \end{definition}
 
 \begin{definition}\label{def:stock}
-    \lean{ECCBinomial.S₁}
+    \lean{ECCBinomial.Basic.S₁}
     \leanok
     \uses{def:parameters, def:sample_space, def:binomial_filtration}
     The \emph{stock} is the risky asset, with price process defined by $S_0$ at time 0 and
@@ -61,7 +61,7 @@
 \end{definition}
 
 \begin{definition}\label{def:trading_strategy}
-    \lean{ECCBinomial.trading_strategy}
+    \lean{ECCBinomial.Basic.trading_strategy}
     \leanok
     \uses{def:binomial_filtration}
     A \emph{trading strategy} is a pair of $\mathcal{F}^0$-adapted processes $\varphi = (\alpha, \beta)$, 
@@ -72,7 +72,7 @@
 \section{Arbitrage}
 
 \begin{definition}\label{def:arbitrage}
-    \lean{ECCBinomial.arbitrage}
+    \lean{ECCBinomial.Basic.arbitrage}
     \leanok
     \uses{def:trading_strategy, def:bond, def:stock}
     There exists \emph{arbitrage} or equivalently an \emph{arbitrage opportunity} if there exists a trading strategy $\varphi = (\alpha, \beta)$ such that
@@ -84,14 +84,14 @@
 \end{definition}
 
 \begin{definition}\label{def:arbitrage_free}
-    \lean{ECCBinomial.arbitrage_free}
+    \lean{ECCBinomial.Basic.arbitrage_free}
     \leanok
     \uses{def:arbitrage}
     The market is \emph{arbitrage-free} if there are no arbitrage opportunities.
 \end{definition}
 
 \begin{definition}\label{def:risk_neutral_probability}
-    \lean{ECCBinomial.q}
+    \lean{ECCBinomial.Basic.q}
     \leanok
     \uses{def:parameters, def:sample_space, def:binomial_filtration, def:bond, def:stock}
     A \emph{risk-neutral probability} is a probability measure $q$ on $\Omega$ such that
@@ -101,7 +101,8 @@
 \end{definition}
 
 \begin{lemma}\label{lem:arbitrage_free_condition}
-    \lean{ECCBinomial.arbitrage_free_condition}
+    \lean{ECCBinomial.Basic.arbitrage_free_condition}
+    \notready
     \uses{def:parameters, def:arbitrage_free}
     The market is arbitrage-free if and only if $d < 1 + r < u$.
 \end{lemma}
@@ -125,7 +126,7 @@
 \end{proof}
 
 \begin{lemma}\label{lem:q_in_unit_interval}
-    \lean{ECCBinomial.q_in_unit_interval}
+    \lean{ECCBinomial.Basic.q_in_unit_interval}
     \leanok
     \uses{def:risk_neutral_probability, def:parameters}
     The risk-neutral probability $q$ is in the unit interval $(0, 1)$ if and only if $d < 1 + r < u$.
@@ -136,7 +137,7 @@
 \end{proof}
 
 \begin{definition}\label{def:risk_neutral_measure}
-  \lean{ECCBinomial.Q}
+  \lean{ECCBinomial.Basic.Q}
   \leanok
   \uses{def:risk_neutral_probability, def:sample_space}
   The \emph{risk-neutral measure} $Q$ on $\Omega = \{u, d\}$ is defined by
@@ -144,7 +145,7 @@
 \end{definition}
 
 \begin{lemma}\label{lem:q_is_prob_measure}
-  \lean{ECCBinomial.q_is_prob_measure}
+  \lean{ECCBinomial.Basic.q_is_prob_measure}
   \uses{def:risk_neutral_measure, lem:q_in_unit_interval}
   $Q$ is a probability measure on $(\Omega, \mathcal{F})$.
 \end{lemma}
@@ -156,7 +157,7 @@
 \end{proof}
 
 \begin{lemma}\label{lem:discounted_stock_expectation}
-  \lean{ECCBinomial.discounted_stock_expectation}
+  \lean{ECCBinomial.Basic.discounted_stock_expectation}
   \uses{def:risk_neutral_measure, def:stock, def:bond}
   The discounted stock price satisfies
   \[
@@ -174,7 +175,7 @@
 \section{European Contingent Claims}
 
 \begin{definition}\label{def:ecc}
-  \lean{ECCBinomial.ECC}
+  \lean{ECCBinomial.Basic.ECC}
   \leanok
   \uses{def:sample_space}
   A \emph{European Contingent Claim} (ECC) is a random variable
@@ -197,14 +198,14 @@
 \section{Replicating Strategies}
 
 \begin{definition}\label{def:replicating_strategy}
-    \lean{ECCBinomial.replicating_strategy}
+    \lean{ECCBinomial.Basic.replicating_strategy}
     \leanok
     \uses{def:trading_strategy, def:ecc}
     A trading strategy $\varphi = {\alpha, \beta}$ is a \emph{replicating strategy} for an ECC $\Phi$ if $V_1(\varphi) = \Phi$.
 \end{definition}
 
 \begin{theorem}\label{thm:replication_existence}
-    \lean{ECCBinomial.replication_existence}
+    \lean{ECCBinomial.Basic.replication_existence}
     \uses{def:replicating_strategy, lem:arbitrage_free_condition}
     Under the arbitrage-free condition, every ECC $\Phi$ has a replicating strategy.
 \end{theorem}
@@ -220,7 +221,7 @@
 \section{Pricing}
 
 \begin{theorem}\label{thm:risk_neutral_pricing}
-  \lean{ECCBinomial.risk_neutral_pricing}
+  \lean{ECCBinomial.Basic.risk_neutral_pricing}
   \uses{thm:replication_existence, def:risk_neutral_measure,
         def:ecc, def:trading_strategy}
   The initial value of the unique replicating strategy of an ECC $\Phi$ is
@@ -238,7 +239,7 @@
 \end{proof}
 
 \begin{corollary}\label{cor:call_price}
-  \lean{ECCBinomial.call_price}
+  \lean{ECCBinomial.Basic.call_price}
   \uses{thm:risk_neutral_pricing, ex:european_call}
   The arbitrage-free price of a European call option with strike $K$ is
   \[
@@ -247,7 +248,7 @@
 \end{corollary}
 
 \begin{corollary}\label{cor:put_call_parity}
-  \lean{ECCBinomial.put_call_parity}
+  \lean{ECCBinomial.Basic.put_call_parity}
   \uses{thm:risk_neutral_pricing, ex:european_call, ex:european_put}
   The prices of a European call $C_0$ and put $P_0$ with the same strike
   $K$ satisfy \emph{put-call parity}:
