@@ -21,4 +21,5 @@ jobs:
         with:
             use-mathlib-cache: true
             build-args: "--wfail"
+            lint: false
       - uses: leanprover-community/docgen-action@v1

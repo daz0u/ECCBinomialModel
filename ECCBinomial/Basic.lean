@@ -47,7 +47,7 @@ open MeasureTheory
 
 instance : MeasurableSpace Ω := ⊤
 
-def binomialFiltration : Filtration (Fin 2) (⊤ : MeasurableSpace Ω) where
+def binomial_filtration : Filtration (Fin 2) (⊤ : MeasurableSpace Ω) where
   seq := fun i => if i = 0 then ⊥ else ⊤
   mono' := by
     intro i j hij
