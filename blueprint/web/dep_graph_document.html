@@ -75,7 +75,7 @@
       Corollary
       </span>
       <span class="corollary_thmlabel">19</span></div>
-    <div class="thm_thmcontent"><p>  The arbitrage-free price of a European call option with strike \(K\) is </p>
+    <div class="thm_thmcontent"><p>   The arbitrage-free price of a European call option with strike \(K\) is </p>
 <div class="displaymath" id="a0000000020">
   \[  V_0 = \frac{q\max (uS_0-K,\, 0) + (1-q)\max (dS_0-K,\, 0)}{1 + r}.  \]
 </div>
@@ -84,7 +84,7 @@
     <a class="latex_link" href="sect0001.html#cor:call_price">LaTeX</a>
     
     
-  
+  <a class="lean_link lean_decl" href="https://daz0u.github.io/ECCBinomialModel/docs/find/#doc/call_price">Lean</a>
     
     
   
@@ -108,7 +108,7 @@
       Corollary
       </span>
       <span class="corollary_thmlabel">20</span></div>
-    <div class="thm_thmcontent"><p>  The prices of a European call \(C_0\) and put \(P_0\) with the same strike \(K\) satisfy <em>put-call parity</em>: </p>
+    <div class="thm_thmcontent"><p>   The prices of a European call \(C_0\) and put \(P_0\) with the same strike \(K\) satisfy <em>put-call parity</em>: </p>
 <div class="displaymath" id="a0000000021">
   \[  C_0 - P_0 = S_0 - \frac{K}{1 + r}.  \]
 </div>
@@ -117,7 +117,7 @@
     <a class="latex_link" href="sect0001.html#cor:put_call_parity">LaTeX</a>
     
     
-  
+  <a class="lean_link lean_decl" href="https://daz0u.github.io/ECCBinomialModel/docs/find/#doc/put_call_parity">Lean</a>
     
     
   
@@ -141,7 +141,7 @@
       Definition
       </span>
       <span class="definition_thmlabel">7</span></div>
-    <div class="thm_thmcontent"><p>  There exists <em>arbitrage</em> or equivalently an <em>arbitrage opportunity</em> if there exists a trading strategy \(\varphi = (\alpha , \beta )\) such that </p>
+    <div class="thm_thmcontent"><p>   There exists <em>arbitrage</em> or equivalently an <em>arbitrage opportunity</em> if there exists a trading strategy \(\varphi = (\alpha , \beta )\) such that </p>
 <ul class="itemize">
   <li><p>\(V_0(\varphi ) = 0\); </p>
 </li>
@@ -155,7 +155,7 @@
     <a class="latex_link" href="sect0001.html#def:arbitrage">LaTeX</a>
     
     
-  
+  <a class="lean_link lean_decl" href="https://daz0u.github.io/ECCBinomialModel/docs/find/#doc/arbitrage">Lean</a>
     
     
   
@@ -179,13 +179,43 @@
       Definition
       </span>
       <span class="definition_thmlabel">8</span></div>
-    <div class="thm_thmcontent"><p>  The market is <em>arbitrage-free</em> if there are no arbitrage opportunities. </p>
+    <div class="thm_thmcontent"><p>   The market is <em>arbitrage-free</em> if there are no arbitrage opportunities. </p>
 </div>
 
     <a class="latex_link" href="sect0001.html#def:arbitrage_free">LaTeX</a>
     
     
+  <a class="lean_link lean_decl" href="https://daz0u.github.io/ECCBinomialModel/docs/find/#doc/arbitrage_free">Lean</a>
+    
+    
   
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="def:binomialfiltration_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="def:binomialfiltration" style="display: none">
+    <div class="thm_thmheading">
+      <span class="definition_thmcaption">
+      Definition
+      </span>
+      <span class="definition_thmlabel">3</span></div>
+    <div class="thm_thmcontent"><p>   The filtration for the ECC binomial model is the natural filtration, defined as \(\mathcal{F}^0_0 = \{ \emptyset , \Omega \} \) and \(\mathcal{F}^0_1 = 2^\Omega \). </p>
+</div>
+
+    <a class="latex_link" href="sect0001.html#def:binomialfiltration">LaTeX</a>
+    
+    
+  <a class="lean_link lean_decl" href="https://daz0u.github.io/ECCBinomialModel/docs/find/#doc/binomial_filtration">Lean</a>
     
     
   
@@ -209,13 +239,22 @@
       Definition
       </span>
       <span class="definition_thmlabel">4</span></div>
-    <div class="thm_thmcontent"><p>  The <em>bond</em> is the risk-free asset, with price process defined by \(B_0 = 1\) and \(B_1 = 1 + r\). </p>
+    <div class="thm_thmcontent"><p>   The <em>bond</em> is the risk-free asset, with price process defined by \(B_0 = 1\) and \(B_1 = 1 + r\). </p>
 </div>
 
     <a class="latex_link" href="sect0001.html#def:bond">LaTeX</a>
     
     
-  
+  <div class="tooltip">
+      <span class="lean_link">Lean</span>
+      <ul class="tooltip_list">
+        
+           <li><a href="https://daz0u.github.io/ECCBinomialModel/docs/find/#doc/B₀" class="lean_decl">B₀</a></li>
+        
+           <li><a href="https://daz0u.github.io/ECCBinomialModel/docs/find/#doc/B₁" class="lean_decl">B₁</a></li>
+        
+      </ul>
+  </div>
     
     
   
@@ -239,43 +278,13 @@
       Definition
       </span>
       <span class="definition_thmlabel">15</span></div>
-    <div class="thm_thmcontent"><p>  A <em>European Contingent Claim</em> (ECC) is a random variable \(\Phi : \Omega \to \mathbb {R}\). We write \(\Phi _u = \Phi (u)\) and \(\Phi _d = \Phi (d)\) for its two possible payoffs. </p>
+    <div class="thm_thmcontent"><p>   A <em>European Contingent Claim</em> (ECC) is a random variable \(\Phi : \Omega \to \mathbb {R}\). We write \(\Phi _u = \Phi (u)\) and \(\Phi _d = \Phi (d)\) for its two possible payoffs. </p>
 </div>
 
     <a class="latex_link" href="sect0001.html#def:ecc">LaTeX</a>
     
     
-  
-    
-    
-  
-    
-  </div>
-    
-      </div>
-    </div>
-
-
-    
-    <div class="dep-modal-container" id="def:filtration_modal">
-      <div class="dep-modal-content">
-          <button class="dep-closebtn">
-<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
-</button>
-        
-  <div class="thm" id="def:filtration" style="display: none">
-    <div class="thm_thmheading">
-      <span class="definition_thmcaption">
-      Definition
-      </span>
-      <span class="definition_thmlabel">3</span></div>
-    <div class="thm_thmcontent"><p>  The filtration for the ECC binomial model is the natural filtration, defined as \(\mathcal{F}^0_0 = \{ \emptyset , \Omega \} \) and \(\mathcal{F}^0_1 = 2^\Omega \). </p>
-</div>
-
-    <a class="latex_link" href="sect0001.html#def:filtration">LaTeX</a>
-    
-    
-  
+  <a class="lean_link lean_decl" href="https://daz0u.github.io/ECCBinomialModel/docs/find/#doc/ECC">Lean</a>
     
     
   
@@ -310,6 +319,7 @@
   <li><p>\(r {\gt} -1\) such that the risk-free asset grows by a factor of \(1 + r\) at each time step. </p>
 </li>
 </ul>
+<p> We note that \(u\), \(d\), and \(r\) are fixed constants and the following relation must hold: \(u {\gt} d\) as the up factor must be greater than the down factor; </p>
 </div>
 
     <a class="latex_link" href="sect0001.html#def:parameters">LaTeX</a>
@@ -339,13 +349,13 @@
       Definition
       </span>
       <span class="definition_thmlabel">16</span></div>
-    <div class="thm_thmcontent"><p>  A trading strategy \(\varphi = {\alpha , \beta }\) is a <em>replicating strategy</em> for an ECC \(\Phi \) if \(V_1(\varphi ) = \Phi \). </p>
+    <div class="thm_thmcontent"><p>   A trading strategy \(\varphi = {\alpha , \beta }\) is a <em>replicating strategy</em> for an ECC \(\Phi \) if \(V_1(\varphi ) = \Phi \). </p>
 </div>
 
     <a class="latex_link" href="sect0001.html#def:replicating_strategy">LaTeX</a>
     
     
-  
+  <a class="lean_link lean_decl" href="https://daz0u.github.io/ECCBinomialModel/docs/find/#doc/replicating_strategy">Lean</a>
     
     
   
@@ -369,13 +379,13 @@
       Definition
       </span>
       <span class="definition_thmlabel">12</span></div>
-    <div class="thm_thmcontent"><p>  The <em>risk-neutral measure</em> \(Q\) on \(\Omega = \{ u, d\} \) is defined by \(Q(\{ u\} ) = q\) and \(Q(\{ d\} ) = 1 - q\). </p>
+    <div class="thm_thmcontent"><p>   The <em>risk-neutral measure</em> \(Q\) on \(\Omega = \{ u, d\} \) is defined by \(Q(\{ u\} ) = q\) and \(Q(\{ d\} ) = 1 - q\). </p>
 </div>
 
     <a class="latex_link" href="sect0001.html#def:risk_neutral_measure">LaTeX</a>
     
     
-  
+  <a class="lean_link lean_decl" href="https://daz0u.github.io/ECCBinomialModel/docs/find/#doc/Q">Lean</a>
     
     
   
@@ -399,7 +409,7 @@
       Definition
       </span>
       <span class="definition_thmlabel">9</span></div>
-    <div class="thm_thmcontent"><p>  A <em>risk-neutral probability</em> is a probability measure \(q\) on \(\Omega \) such that </p>
+    <div class="thm_thmcontent"><p>   A <em>risk-neutral probability</em> is a probability measure \(q\) on \(\Omega \) such that </p>
 <div class="displaymath" id="a0000000007">
   \[  q = \frac{(1 + r) - d}{u - d}  \]
 </div>
@@ -408,7 +418,7 @@
     <a class="latex_link" href="sect0001.html#def:risk_neutral_probability">LaTeX</a>
     
     
-  
+  <a class="lean_link lean_decl" href="https://daz0u.github.io/ECCBinomialModel/docs/find/#doc/q">Lean</a>
     
     
   
@@ -432,13 +442,13 @@
       Definition
       </span>
       <span class="definition_thmlabel">2</span></div>
-    <div class="thm_thmcontent"><p>  The sample space for the ECC binomial model is \(\Omega = \{ u, d\} \), representing a single up or down move. We apply the probability measure \(P\) such that \(P(\{ u\} ) {\gt} 0\) and \(P(\{ d\} ) {\gt} 0\). </p>
+    <div class="thm_thmcontent"><p>   The sample space for the ECC binomial model is \(\Omega = \{ u, d\} \), representing a single up or down move. We apply the probability measure \(P\) such that \(P(\{ u\} ) {\gt} 0\) and \(P(\{ d\} ) {\gt} 0\). </p>
 </div>
 
     <a class="latex_link" href="sect0001.html#def:sample_space">LaTeX</a>
     
     
-  
+  <a class="lean_link lean_decl" href="https://daz0u.github.io/ECCBinomialModel/docs/find/#doc/Ω">Lean</a>
     
     
   
@@ -462,7 +472,7 @@
       Definition
       </span>
       <span class="definition_thmlabel">5</span></div>
-    <div class="thm_thmcontent"><p>  The <em>stock</em> is the risky asset, with price process defined by \(S_0\) at time 0 and </p>
+    <div class="thm_thmcontent"><p>   The <em>stock</em> is the risky asset, with price process defined by \(S_0\) at time 0 and </p>
 <div class="displaymath" id="a0000000005">
   \[  S_1(\omega ) = \begin{cases}  u S_0 &  \text{if } \omega = u, \\ d S_0 &  \text{if } \omega = d. \end{cases}  \]
 </div>
@@ -471,7 +481,7 @@
     <a class="latex_link" href="sect0001.html#def:stock">LaTeX</a>
     
     
-  
+  <a class="lean_link lean_decl" href="https://daz0u.github.io/ECCBinomialModel/docs/find/#doc/S₁">Lean</a>
     
     
   
@@ -495,13 +505,13 @@
       Definition
       </span>
       <span class="definition_thmlabel">6</span></div>
-    <div class="thm_thmcontent"><p>  A <em>trading strategy</em> is a pair of \(\mathcal{F}^0\)-adapted processes \(\varphi = (\alpha , \beta )\), where \(\alpha _t\) represents the number of shares of the stock held at time \(t\) and \(\beta _t\) represents the number of shares of the bond held at time \(t\). The value of the trading strategy at time \(t\) is given by \(V_t(\varphi ) = \alpha _t S_t + \beta _t B_t\). </p>
+    <div class="thm_thmcontent"><p>   A <em>trading strategy</em> is a pair of \(\mathcal{F}^0\)-adapted processes \(\varphi = (\alpha , \beta )\), where \(\alpha _t\) represents the number of shares of the stock held at time \(t\) and \(\beta _t\) represents the number of shares of the bond held at time \(t\). The value of the trading strategy at time \(t\) is given by \(V_t(\varphi ) = \alpha _t S_t + \beta _t B_t\). </p>
 </div>
 
     <a class="latex_link" href="sect0001.html#def:trading_strategy">LaTeX</a>
     
     
-  
+  <a class="lean_link lean_decl" href="https://daz0u.github.io/ECCBinomialModel/docs/find/#doc/trading_strategy">Lean</a>
     
     
   
@@ -525,13 +535,13 @@
       Lemma
       </span>
       <span class="lemma_thmlabel">10</span></div>
-    <div class="thm_thmcontent"><p>  The market is arbitrage-free if and only if \(d {\lt} 1 + r {\lt} u\). </p>
+    <div class="thm_thmcontent"><p>   The market is arbitrage-free if and only if \(d {\lt} 1 + r {\lt} u\). </p>
 </div>
 
     <a class="latex_link" href="sect0001.html#lem:arbitrage_free_condition">LaTeX</a>
     
     
-  
+  <a class="lean_link lean_decl" href="https://daz0u.github.io/ECCBinomialModel/docs/find/#doc/arbitrage_free_condition">Lean</a>
     
     
   
@@ -555,7 +565,7 @@
       Lemma
       </span>
       <span class="lemma_thmlabel">14</span></div>
-    <div class="thm_thmcontent"><p>  The discounted stock price satisfies </p>
+    <div class="thm_thmcontent"><p>   The discounted stock price satisfies </p>
 <div class="displaymath" id="a0000000013">
   \[  E^Q\! \left[\frac{S_1}{1 + r}\right] = S_0.  \]
 </div>
@@ -564,7 +574,7 @@
     <a class="latex_link" href="sect0001.html#lem:discounted_stock_expectation">LaTeX</a>
     
     
-  
+  <a class="lean_link lean_decl" href="https://daz0u.github.io/ECCBinomialModel/docs/find/#doc/discounted_stock_expectation">Lean</a>
     
     
   
@@ -588,13 +598,13 @@
       Lemma
       </span>
       <span class="lemma_thmlabel">11</span></div>
-    <div class="thm_thmcontent"><p>  The risk-neutral probability \(q\) is in the unit interval \((0, 1)\) if and only if \(d {\lt} 1 + r {\lt} u\). </p>
+    <div class="thm_thmcontent"><p>   The risk-neutral probability \(q\) is in the unit interval \((0, 1)\) if and only if \(d {\lt} 1 + r {\lt} u\). </p>
 </div>
 
     <a class="latex_link" href="sect0001.html#lem:q_in_unit_interval">LaTeX</a>
     
     
-  
+  <a class="lean_link lean_decl" href="https://daz0u.github.io/ECCBinomialModel/docs/find/#doc/q_in_unit_interval">Lean</a>
     
     
   
@@ -618,13 +628,13 @@
       Lemma
       </span>
       <span class="lemma_thmlabel">13</span></div>
-    <div class="thm_thmcontent"><p>  \(Q\) is a probability measure on \((\Omega , \mathcal{F})\). </p>
+    <div class="thm_thmcontent"><p>   \(Q\) is a probability measure on \((\Omega , \mathcal{F})\). </p>
 </div>
 
     <a class="latex_link" href="sect0001.html#lem:q_is_prob_measure">LaTeX</a>
     
     
-  
+  <a class="lean_link lean_decl" href="https://daz0u.github.io/ECCBinomialModel/docs/find/#doc/q_is_prob_measure">Lean</a>
     
     
   
@@ -648,13 +658,13 @@
       Theorem
       </span>
       <span class="theorem_thmlabel">17</span></div>
-    <div class="thm_thmcontent"><p>  Under the arbitrage-free condition, every ECC \(\Phi \) has a replicating strategy. </p>
+    <div class="thm_thmcontent"><p>   Under the arbitrage-free condition, every ECC \(\Phi \) has a replicating strategy. </p>
 </div>
 
     <a class="latex_link" href="sect0001.html#thm:replication_existence">LaTeX</a>
     
     
-  
+  <a class="lean_link lean_decl" href="https://daz0u.github.io/ECCBinomialModel/docs/find/#doc/replication_existence">Lean</a>
     
     
   
@@ -678,7 +688,7 @@
       Theorem
       </span>
       <span class="theorem_thmlabel">18</span></div>
-    <div class="thm_thmcontent"><p>  The initial value of the unique replicating strategy of an ECC \(\Phi \) is </p>
+    <div class="thm_thmcontent"><p>   The initial value of the unique replicating strategy of an ECC \(\Phi \) is </p>
 <div class="displaymath" id="a0000000019">
   \[  V_0 = \frac{1}{1 + r}\, E^Q[\Phi ] = \frac{q\, \Phi _u + (1-q)\, \Phi _d}{1 + r}.  \]
 </div>
@@ -687,7 +697,7 @@
     <a class="latex_link" href="sect0001.html#thm:risk_neutral_pricing">LaTeX</a>
     
     
-  
+  <a class="lean_link lean_decl" href="https://daz0u.github.io/ECCBinomialModel/docs/find/#doc/risk_neutral_pricing">Lean</a>
     
     
   
@@ -715,7 +725,7 @@ graphContainer.graphviz({useWorker: true})
     .width(width)
     .height(height)
     .fit(true)
-    .renderDot(`strict digraph "" {	graph [bgcolor=transparent];	node [label="\N",		penwidth=1.8	];	edge [arrowhead=vee];	"lem:q_is_prob_measure"	[label=q_is_prob_measure,		shape=ellipse];	"lem:discounted_stock_expectation"	[label=discounted_stock_expectation,		shape=ellipse];	"thm:replication_existence"	[label=replication_existence,		shape=ellipse];	"thm:risk_neutral_pricing"	[label=risk_neutral_pricing,		shape=ellipse];	"thm:replication_existence" -> "thm:risk_neutral_pricing"	[style=dashed];	"cor:put_call_parity"	[label=put_call_parity,		shape=ellipse];	"thm:risk_neutral_pricing" -> "cor:put_call_parity"	[style=dashed];	"cor:call_price"	[label=call_price,		shape=ellipse];	"thm:risk_neutral_pricing" -> "cor:call_price"	[style=dashed];	"def:filtration"	[label=filtration,		shape=box];	"def:trading_strategy"	[label=trading_strategy,		shape=box];	"def:filtration" -> "def:trading_strategy"	[style=dashed];	"def:stock"	[label=stock,		shape=box];	"def:filtration" -> "def:stock"	[style=dashed];	"def:arbitrage"	[label=arbitrage,		shape=box];	"def:trading_strategy" -> "def:arbitrage"	[style=dashed];	"def:replicating_strategy"	[label=replicating_strategy,		shape=box];	"def:trading_strategy" -> "def:replicating_strategy"	[style=dashed];	"def:risk_neutral_probability"	[label=risk_neutral_probability,		shape=box];	"def:stock" -> "def:risk_neutral_probability"	[style=dashed];	"def:stock" -> "def:arbitrage"	[style=dashed];	"lem:q_in_unit_interval"	[label=q_in_unit_interval,		shape=ellipse];	"def:risk_neutral_probability" -> "lem:q_in_unit_interval"	[style=dashed];	"def:risk_neutral_measure"	[label=risk_neutral_measure,		shape=box];	"def:risk_neutral_probability" -> "def:risk_neutral_measure"	[style=dashed];	"lem:q_in_unit_interval" -> "lem:q_is_prob_measure"	[style=dashed];	"def:risk_neutral_measure" -> "lem:q_is_prob_measure"	[style=dashed];	"def:risk_neutral_measure" -> "lem:discounted_stock_expectation"	[style=dashed];	"def:risk_neutral_measure" -> "thm:risk_neutral_pricing"	[style=dashed];	"def:arbitrage_free"	[label=arbitrage_free,		shape=box];	"def:arbitrage" -> "def:arbitrage_free"	[style=dashed];	"def:replicating_strategy" -> "thm:replication_existence"	[style=dashed];	"def:bond"	[label=bond,		shape=box];	"def:bond" -> "def:risk_neutral_probability"	[style=dashed];	"def:bond" -> "def:arbitrage"	[style=dashed];	"lem:arbitrage_free_condition"	[label=arbitrage_free_condition,		shape=ellipse];	"def:arbitrage_free" -> "lem:arbitrage_free_condition"	[style=dashed];	"def:parameters"	[color=blue,		fillcolor="#A3D6FF",		label=parameters,		shape=box,		style=filled];	"def:parameters" -> "def:bond"	[style=dashed];	"def:sample_space"	[label=sample_space,		shape=box];	"def:parameters" -> "def:sample_space"	[style=dashed];	"def:sample_space" -> "def:filtration"	[style=dashed];	"def:ecc"	[label=ecc,		shape=box];	"def:sample_space" -> "def:ecc"	[style=dashed];	"def:ecc" -> "def:replicating_strategy"	[style=dashed];	"lem:arbitrage_free_condition" -> "thm:replication_existence"	[style=dashed];}`)
+    .renderDot(`strict digraph "" {	graph [bgcolor=transparent];	node [label="\N",		penwidth=1.8	];	edge [arrowhead=vee];	"def:ecc"	[color=green,		fillcolor="#B0ECA3",		label=ecc,		shape=box,		style=filled];	"def:replicating_strategy"	[color=green,		fillcolor="#B0ECA3",		label=replicating_strategy,		shape=box,		style=filled];	"def:ecc" -> "def:replicating_strategy"	[style=dashed];	"thm:replication_existence"	[label=replication_existence,		shape=ellipse];	"def:replicating_strategy" -> "thm:replication_existence"	[style=dashed];	"thm:risk_neutral_pricing"	[label=risk_neutral_pricing,		shape=ellipse];	"thm:replication_existence" -> "thm:risk_neutral_pricing"	[style=dashed];	"cor:put_call_parity"	[label=put_call_parity,		shape=ellipse];	"thm:risk_neutral_pricing" -> "cor:put_call_parity"	[style=dashed];	"cor:call_price"	[label=call_price,		shape=ellipse];	"thm:risk_neutral_pricing" -> "cor:call_price"	[style=dashed];	"def:arbitrage"	[color=green,		fillcolor="#B0ECA3",		label=arbitrage,		shape=box,		style=filled];	"def:arbitrage_free"	[color=green,		fillcolor="#B0ECA3",		label=arbitrage_free,		shape=box,		style=filled];	"def:arbitrage" -> "def:arbitrage_free"	[style=dashed];	"lem:arbitrage_free_condition"	[color="#FFAA33",		label=arbitrage_free_condition,		shape=ellipse];	"def:arbitrage_free" -> "lem:arbitrage_free_condition"	[style=dashed];	"lem:arbitrage_free_condition" -> "thm:replication_existence"	[style=dashed];	"lem:discounted_stock_expectation"	[color=blue,		fillcolor="#A3D6FF",		label=discounted_stock_expectation,		shape=ellipse,		style=filled];	"def:bond"	[color=green,		fillcolor="#B0ECA3",		label=bond,		shape=box,		style=filled];	"def:bond" -> "def:arbitrage"	[style=dashed];	"def:risk_neutral_probability"	[color=green,		fillcolor="#B0ECA3",		label=risk_neutral_probability,		shape=box,		style=filled];	"def:bond" -> "def:risk_neutral_probability"	[style=dashed];	"lem:q_in_unit_interval"	[color=green,		label=q_in_unit_interval,		shape=ellipse];	"def:risk_neutral_probability" -> "lem:q_in_unit_interval"	[style=dashed];	"def:risk_neutral_measure"	[color=green,		fillcolor="#B0ECA3",		label=risk_neutral_measure,		shape=box,		style=filled];	"def:risk_neutral_probability" -> "def:risk_neutral_measure"	[style=dashed];	"lem:q_is_prob_measure"	[color=blue,		fillcolor="#A3D6FF",		label=q_is_prob_measure,		shape=ellipse,		style=filled];	"lem:q_in_unit_interval" -> "lem:q_is_prob_measure"	[style=dashed];	"def:risk_neutral_measure" -> "thm:risk_neutral_pricing"	[style=dashed];	"def:risk_neutral_measure" -> "lem:discounted_stock_expectation"	[style=dashed];	"def:risk_neutral_measure" -> "lem:q_is_prob_measure"	[style=dashed];	"def:sample_space"	[label=sample_space,		shape=box];	"def:sample_space" -> "def:ecc"	[style=dashed];	"def:binomialfiltration"	[color=green,		fillcolor="#B0ECA3",		label=binomialfiltration,		shape=box,		style=filled];	"def:sample_space" -> "def:binomialfiltration"	[style=dashed];	"def:stock"	[color=green,		fillcolor="#B0ECA3",		label=stock,		shape=box,		style=filled];	"def:sample_space" -> "def:stock"	[style=dashed];	"def:stock" -> "def:arbitrage"	[style=dashed];	"def:stock" -> "def:risk_neutral_probability"	[style=dashed];	"def:trading_strategy"	[color=green,		fillcolor="#B0ECA3",		label=trading_strategy,		shape=box,		style=filled];	"def:trading_strategy" -> "def:replicating_strategy"	[style=dashed];	"def:trading_strategy" -> "def:arbitrage"	[style=dashed];	"def:parameters"	[color=blue,		fillcolor="#A3D6FF",		label=parameters,		shape=box,		style=filled];	"def:parameters" -> "def:bond"	[style=dashed];	"def:parameters" -> "def:sample_space"	[style=dashed];}`)
     .on("end", interactive);
 
 latexLabelEscaper = function(label) {

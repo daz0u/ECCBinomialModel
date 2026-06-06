@@ -2,8 +2,6 @@
 Authors: Danny Zou
 -/
 
-module
-
 import Mathlib
 
 /-!

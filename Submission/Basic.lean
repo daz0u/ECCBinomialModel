@@ -52,11 +52,11 @@
     \uses{def:parameters, def:sample_space, def:binomial_filtration}
     The \emph{stock} is the risky asset, with price process defined by $S_0$ at time 0 and
     \[
-        S_1(\omega) = 
+        S_1(\omega) =
         \begin{cases}
             u S_0 & \text{if } \omega = u, \\
             d S_0 & \text{if } \omega = d.
-        \end{cases}    
+        \end{cases}
     \]
 \end{definition}
 
@@ -64,7 +64,7 @@
     \lean{trading_strategy}
     \leanok
     \uses{def:binomial_filtration}
-    A \emph{trading strategy} is a pair of $\mathcal{F}^0$-adapted processes $\varphi = (\alpha, \beta)$, 
+    A \emph{trading strategy} is a pair of $\mathcal{F}^0$-adapted processes $\varphi = (\alpha, \beta)$,
     where $\alpha_t$ represents the number of shares of the stock held at time $t$ and $\beta_t$ represents the number of shares of the bond held at time $t$.
     The value of the trading strategy at time $t$ is given by $V_t(\varphi) = \alpha_t S_t + \beta_t B_t$.
 \end{definition}
@@ -110,16 +110,16 @@
 \begin{proof}
     \begin{itemize}
         \item ($\Rightarrow$) Assume the market is arbitrage-free. If $(1 + r) \leq d$, then define the trading strategy $\varphi = (\alpha, \beta)$ by $\alpha_0 = 1$, $\beta_0 = -S_0$.
-            Then $V_0(\varphi) = 0$ and $V_1(\varphi) = S_1 - S_0 (1 + r) \geq 0$ with positive probability. Thus, $E[V_1(\varphi)] > 0$, which contradicts the assumption of no arbitrage. 
+            Then $V_0(\varphi) = 0$ and $V_1(\varphi) = S_1 - S_0 (1 + r) \geq 0$ with positive probability. Thus, $E[V_1(\varphi)] > 0$, which contradicts the assumption of no arbitrage.
             Similarly, if $(1 + r) \geq u$, then define the trading strategy $\varphi = (\alpha, \beta)$ by $\alpha_0 = -1$, $\beta_0 = S_0$.
             Then $V_0(\varphi) = 0$ and $V_1(\varphi) = -S_1 + S_0 (1 + r) \geq 0$ with positive probability, leading to a similar contradiction.
         \item ($\Leftarrow$) Assume $d < 1 + r < u$. Let $\varphi = (\alpha, \beta)$ be any trading strategy such that $V_0(\varphi) = 0$. Then $\beta_0 = -\alpha_0 S_0$ and
             \[
-                V_1(\varphi) = 
+                V_1(\varphi) =
                 \begin{cases}
                     \alpha_0 S_1 + \beta_0 S_0 (1 + r) = \alpha_0 S_0(u - (1 + r)) & \text{if } \omega = u,  \\
                     \alpha_0 S_1 + \beta_0 S_0 (1 + r) = \alpha_0 S_0(d - (1 + r)) & \text{if } \omega = d.
-                \end{cases}    
+                \end{cases}
             \]
             Since $d < 1 + r < u$, we note that $V_1(\varphi) < 0$ with positive probability, so the market is arbitrage-free.
         \end{itemize}

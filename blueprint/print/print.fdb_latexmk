@@ -1,8 +1,8 @@
 # Fdb version 4
-["pdflatex"] 1778310536.41951 "print.tex" "/c/projects/Lean/ECCBinomial/blueprint/print/print.pdf" "print" 1778310539.77059 0
-  "/c/projects/Lean/ECCBinomial/blueprint/print/print.aux" 1778310539.42121 2287 dcc25edf7c48c79639e78cd557d28536 "pdflatex"
-  "C:/projects/Lean/ECCBinomial/blueprint/print/print.aux" 1778310539.42121 2287 dcc25edf7c48c79639e78cd557d28536 "pdflatex"
-  "C:/projects/Lean/ECCBinomial/blueprint/print/print.out" 1778310539.4258 1133 1919b389731ed98cadd8707c0d1e2546 "pdflatex"
+["pdflatex"] 1780728267.87923 "print.tex" "/c/projects/Lean/ECCBinomial/blueprint/print/print.pdf" "print" 1780728270.10711 0
+  "/c/projects/Lean/ECCBinomial/blueprint/print/print.aux" 1780728269.87381 2295 66277a9e3f7918dd9080a0fd51955c4f "pdflatex"
+  "C:/projects/Lean/ECCBinomial/blueprint/print/print.aux" 1780728269.87381 2295 66277a9e3f7918dd9080a0fd51955c4f "pdflatex"
+  "C:/projects/Lean/ECCBinomial/blueprint/print/print.out" 1780728269.88629 1133 1919b389731ed98cadd8707c0d1e2546 "pdflatex"
   "c:/texlive/2026/texmf-dist/fonts/map/fontname/texfonts.map" 1778218334.02974 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "c:/texlive/2026/texmf-dist/fonts/tfm/adobe/zapfding/pzdr.tfm" 1778274151.26279 1528 f853c4d1b4e0550255e02831fdc8496f ""
   "c:/texlive/2026/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam10.tfm" 1778212872.90765 916 f87d7c45f9c908e672703b83b72241a3 ""
@@ -80,10 +80,10 @@
   "c:/texlive/2026/texmf-dist/web2c/texmf.cnf" 1778212610.60639 43630 e9fa012910491fe5ae08a72c3c2997a7 ""
   "c:/texlive/2026/texmf-var/web2c/xetex/xelatex.fmt" 1778274899 5955156 d8ad9a422bd24ad87716feaa3110870c ""
   "c:/texlive/2026/texmf.cnf" 1778274332.61439 713 baa45e065482d44c4cd81b98ef72c63b ""
-  "content.tex" 1778310520.29201 9065 c3a257c7c22412e7a85b3103d809f7a6 ""
+  "content.tex" 1780728256.59961 9868 bd4b2e3754bff5cfcd671ceadef70d7f ""
   "macros/common.tex" 1778310494.38534 859 ab94cc8caf0fbe001f1a213d2646e542 ""
   "macros/print.tex" 1778208912.38113 1101 87627b2ec24fef68edc71c13f43f7bab ""
-  "print.tex" 1778208912.38726 1115 d817d1e9decf476bc2aa75931a4ab4b5 ""
+  "print.tex" 1780727707.10246 1115 d817d1e9decf476bc2aa75931a4ab4b5 ""
   (generated)
   "/c/projects/Lean/ECCBinomial/blueprint/print/print.aux"
   "/c/projects/Lean/ECCBinomial/blueprint/print/print.log"

@@ -96,6 +96,7 @@
   <li><p>\(r {\gt} -1\) such that the risk-free asset grows by a factor of \(1 + r\) at each time step. </p>
 </li>
 </ul>
+<p> We note that \(u\), \(d\), and \(r\) are fixed constants and the following relation must hold: \(u {\gt} d\) as the up factor must be greater than the down factor; </p>
 
   </div>
 </div>
@@ -134,14 +135,33 @@
 
     
     
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://daz0u.github.io/ECCBinomialModel/docs/find/#doc/Ω" class="lean_decl">Ω</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
         </div>
   </div>
   <div class="definition_thmcontent">
-  <p>  The sample space for the ECC binomial model is \(\Omega = \{ u, d\} \), representing a single up or down move. We apply the probability measure \(P\) such that \(P(\{ u\} ) {\gt} 0\) and \(P(\{ d\} ) {\gt} 0\). </p>
+  <p>   The sample space for the ECC binomial model is \(\Omega = \{ u, d\} \), representing a single up or down move. We apply the probability measure \(P\) such that \(P(\{ u\} ) {\gt} 0\) and \(P(\{ d\} ) {\gt} 0\). </p>
 
   </div>
 </div>
-<div class="definition_thmwrapper theorem-style-definition" id="def:filtration">
+<div class="definition_thmwrapper theorem-style-definition" id="def:binomialfiltration">
   <div class="definition_thmheading">
     <span class="definition_thmcaption">
     Definition
@@ -149,10 +169,12 @@
     <span class="definition_thmlabel">3</span>
     <div class="thm_header_extras">
 
+    
+    ✓
         </div>
     <div class="thm_header_hidden_extras">
 
-    <a class="icon proof" href="sect0001.html#def:filtration">#</a>
+    <a class="icon proof" href="sect0001.html#def:binomialfiltration">#</a>
     
     
     <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
@@ -176,10 +198,29 @@
 
     
     
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://daz0u.github.io/ECCBinomialModel/docs/find/#doc/binomial_filtration" class="lean_decl">binomial_filtration</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
         </div>
   </div>
   <div class="definition_thmcontent">
-  <p>  The filtration for the ECC binomial model is the natural filtration, defined as \(\mathcal{F}^0_0 = \{ \emptyset , \Omega \} \) and \(\mathcal{F}^0_1 = 2^\Omega \). </p>
+  <p>   The filtration for the ECC binomial model is the natural filtration, defined as \(\mathcal{F}^0_0 = \{ \emptyset , \Omega \} \) and \(\mathcal{F}^0_1 = 2^\Omega \). </p>
 
   </div>
 </div>
@@ -192,6 +233,8 @@
     <span class="definition_thmlabel">4</span>
     <div class="thm_header_extras">
 
+    
+    ✓
         </div>
     <div class="thm_header_hidden_extras">
 
@@ -219,10 +262,31 @@
 
     
     
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://daz0u.github.io/ECCBinomialModel/docs/find/#doc/B₀" class="lean_decl">B₀</a></li>
+          
+          <li><a href="https://daz0u.github.io/ECCBinomialModel/docs/find/#doc/B₁" class="lean_decl">B₁</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
         </div>
   </div>
   <div class="definition_thmcontent">
-  <p>  The <em>bond</em> is the risk-free asset, with price process defined by \(B_0 = 1\) and \(B_1 = 1 + r\). </p>
+  <p>   The <em>bond</em> is the risk-free asset, with price process defined by \(B_0 = 1\) and \(B_1 = 1 + r\). </p>
 
   </div>
 </div>
@@ -234,6 +298,8 @@
     <span class="definition_thmlabel">5</span>
     <div class="thm_header_extras">
 
+    
+    ✓
         </div>
     <div class="thm_header_hidden_extras">
 
@@ -256,8 +322,6 @@
           
           <li><a href="sect0001.html#def:sample_space">Definition 2</a></li>
           
-          <li><a href="sect0001.html#def:filtration">Definition 3</a></li>
-          
         </ul>
     
       </div>
@@ -265,10 +329,29 @@
 
     
     
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://daz0u.github.io/ECCBinomialModel/docs/find/#doc/S₁" class="lean_decl">S₁</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
         </div>
   </div>
   <div class="definition_thmcontent">
-  <p>  The <em>stock</em> is the risky asset, with price process defined by \(S_0\) at time 0 and </p>
+  <p>   The <em>stock</em> is the risky asset, with price process defined by \(S_0\) at time 0 and </p>
 <div class="displaymath" id="a0000000005">
   \[  S_1(\omega ) = \begin{cases}  u S_0 &  \text{if } \omega = u, \\ d S_0 &  \text{if } \omega = d. \end{cases}  \]
 </div>
@@ -283,25 +366,27 @@
     <span class="definition_thmlabel">6</span>
     <div class="thm_header_extras">
 
+    
+    ✓
         </div>
     <div class="thm_header_hidden_extras">
 
     <a class="icon proof" href="sect0001.html#def:trading_strategy">#</a>
     
     
-    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
-</button>
+    
+    <button class="modal lean">L∃∀N</button>
         <div class="modal-container">
       <div class="modal-content">
         <header>
-          <h1>Uses</h1>
+          <h1>Lean declarations</h1>
           <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
 </button>
         </header>
         
         <ul class="uses">
           
-          <li><a href="sect0001.html#def:filtration">Definition 3</a></li>
+          <li><a href="https://daz0u.github.io/ECCBinomialModel/docs/find/#doc/trading_strategy" class="lean_decl">trading_strategy</a></li>
           
         </ul>
     
@@ -309,11 +394,10 @@
     </div>
 
     
-    
         </div>
   </div>
   <div class="definition_thmcontent">
-  <p>  A <em>trading strategy</em> is a pair of \(\mathcal{F}^0\)-adapted processes \(\varphi = (\alpha , \beta )\), where \(\alpha _t\) represents the number of shares of the stock held at time \(t\) and \(\beta _t\) represents the number of shares of the bond held at time \(t\). The value of the trading strategy at time \(t\) is given by \(V_t(\varphi ) = \alpha _t S_t + \beta _t B_t\). </p>
+  <p>   A <em>trading strategy</em> is a pair of \(\mathcal{F}^0\)-adapted processes \(\varphi = (\alpha , \beta )\), where \(\alpha _t\) represents the number of shares of the stock held at time \(t\) and \(\beta _t\) represents the number of shares of the bond held at time \(t\). The value of the trading strategy at time \(t\) is given by \(V_t(\varphi ) = \alpha _t S_t + \beta _t B_t\). </p>
 
   </div>
 </div>
@@ -326,6 +410,8 @@
     <span class="definition_thmlabel">7</span>
     <div class="thm_header_extras">
 
+    
+    ✓
         </div>
     <div class="thm_header_hidden_extras">
 
@@ -357,10 +443,29 @@
 
     
     
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://daz0u.github.io/ECCBinomialModel/docs/find/#doc/arbitrage" class="lean_decl">arbitrage</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
         </div>
   </div>
   <div class="definition_thmcontent">
-  <p>  There exists <em>arbitrage</em> or equivalently an <em>arbitrage opportunity</em> if there exists a trading strategy \(\varphi = (\alpha , \beta )\) such that </p>
+  <p>   There exists <em>arbitrage</em> or equivalently an <em>arbitrage opportunity</em> if there exists a trading strategy \(\varphi = (\alpha , \beta )\) such that </p>
 <ul class="itemize">
   <li><p>\(V_0(\varphi ) = 0\); </p>
 </li>
@@ -380,6 +485,8 @@
     <span class="definition_thmlabel">8</span>
     <div class="thm_header_extras">
 
+    
+    ✓
         </div>
     <div class="thm_header_hidden_extras">
 
@@ -407,10 +514,29 @@
 
     
     
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://daz0u.github.io/ECCBinomialModel/docs/find/#doc/arbitrage_free" class="lean_decl">arbitrage_free</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
         </div>
   </div>
   <div class="definition_thmcontent">
-  <p>  The market is <em>arbitrage-free</em> if there are no arbitrage opportunities. </p>
+  <p>   The market is <em>arbitrage-free</em> if there are no arbitrage opportunities. </p>
 
   </div>
 </div>
@@ -422,6 +548,8 @@
     <span class="definition_thmlabel">9</span>
     <div class="thm_header_extras">
 
+    
+    ✓
         </div>
     <div class="thm_header_hidden_extras">
 
@@ -444,8 +572,6 @@
           
           <li><a href="sect0001.html#def:sample_space">Definition 2</a></li>
           
-          <li><a href="sect0001.html#def:filtration">Definition 3</a></li>
-          
           <li><a href="sect0001.html#def:bond">Definition 4</a></li>
           
           <li><a href="sect0001.html#def:stock">Definition 5</a></li>
@@ -457,10 +583,29 @@
 
     
     
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://daz0u.github.io/ECCBinomialModel/docs/find/#doc/q" class="lean_decl">q</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
         </div>
   </div>
   <div class="definition_thmcontent">
-  <p>  A <em>risk-neutral probability</em> is a probability measure \(q\) on \(\Omega \) such that </p>
+  <p>   A <em>risk-neutral probability</em> is a probability measure \(q\) on \(\Omega \) such that </p>
 <div class="displaymath" id="a0000000007">
   \[  q = \frac{(1 + r) - d}{u - d}  \]
 </div>
@@ -507,10 +652,29 @@
 
     
     
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://daz0u.github.io/ECCBinomialModel/docs/find/#doc/arbitrage_free_condition" class="lean_decl">arbitrage_free_condition</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
         </div>
   </div>
   <div class="lemma_thmcontent">
-  <p>  The market is arbitrage-free if and only if \(d {\lt} 1 + r {\lt} u\). </p>
+  <p>   The market is arbitrage-free if and only if \(d {\lt} 1 + r {\lt} u\). </p>
 
   </div>
 </div>
@@ -575,10 +739,29 @@
 
     
     
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://daz0u.github.io/ECCBinomialModel/docs/find/#doc/q_in_unit_interval" class="lean_decl">q_in_unit_interval</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
         </div>
   </div>
   <div class="lemma_thmcontent">
-  <p>  The risk-neutral probability \(q\) is in the unit interval \((0, 1)\) if and only if \(d {\lt} 1 + r {\lt} u\). </p>
+  <p>   The risk-neutral probability \(q\) is in the unit interval \((0, 1)\) if and only if \(d {\lt} 1 + r {\lt} u\). </p>
 
   </div>
 </div>
@@ -602,6 +785,8 @@
     <span class="definition_thmlabel">12</span>
     <div class="thm_header_extras">
 
+    
+    ✓
         </div>
     <div class="thm_header_hidden_extras">
 
@@ -631,10 +816,29 @@
 
     
     
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://daz0u.github.io/ECCBinomialModel/docs/find/#doc/Q" class="lean_decl">Q</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
         </div>
   </div>
   <div class="definition_thmcontent">
-  <p>  The <em>risk-neutral measure</em> \(Q\) on \(\Omega = \{ u, d\} \) is defined by \(Q(\{ u\} ) = q\) and \(Q(\{ d\} ) = 1 - q\). </p>
+  <p>   The <em>risk-neutral measure</em> \(Q\) on \(\Omega = \{ u, d\} \) is defined by \(Q(\{ u\} ) = q\) and \(Q(\{ d\} ) = 1 - q\). </p>
 
   </div>
 </div>
@@ -680,10 +884,29 @@
 
     
     
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://daz0u.github.io/ECCBinomialModel/docs/find/#doc/q_is_prob_measure" class="lean_decl">q_is_prob_measure</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
         </div>
   </div>
   <div class="lemma_thmcontent">
-  <p>  \(Q\) is a probability measure on \((\Omega , \mathcal{F})\). </p>
+  <p>   \(Q\) is a probability measure on \((\Omega , \mathcal{F})\). </p>
 
   </div>
 </div>
@@ -747,10 +970,29 @@
 
     
     
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://daz0u.github.io/ECCBinomialModel/docs/find/#doc/discounted_stock_expectation" class="lean_decl">discounted_stock_expectation</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
         </div>
   </div>
   <div class="lemma_thmcontent">
-  <p>  The discounted stock price satisfies </p>
+  <p>   The discounted stock price satisfies </p>
 <div class="displaymath" id="a0000000013">
   \[  E^Q\! \left[\frac{S_1}{1 + r}\right] = S_0.  \]
 </div>
@@ -778,6 +1020,8 @@
     <span class="definition_thmlabel">15</span>
     <div class="thm_header_extras">
 
+    
+    ✓
         </div>
     <div class="thm_header_hidden_extras">
 
@@ -805,10 +1049,29 @@
 
     
     
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://daz0u.github.io/ECCBinomialModel/docs/find/#doc/ECC" class="lean_decl">ECC</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
         </div>
   </div>
   <div class="definition_thmcontent">
-  <p>  A <em>European Contingent Claim</em> (ECC) is a random variable \(\Phi : \Omega \to \mathbb {R}\). We write \(\Phi _u = \Phi (u)\) and \(\Phi _d = \Phi (d)\) for its two possible payoffs. </p>
+  <p>   A <em>European Contingent Claim</em> (ECC) is a random variable \(\Phi : \Omega \to \mathbb {R}\). We write \(\Phi _u = \Phi (u)\) and \(\Phi _d = \Phi (d)\) for its two possible payoffs. </p>
 
   </div>
 </div>
@@ -909,6 +1172,8 @@
     <span class="definition_thmlabel">16</span>
     <div class="thm_header_extras">
 
+    
+    ✓
         </div>
     <div class="thm_header_hidden_extras">
 
@@ -938,10 +1203,29 @@
 
     
     
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://daz0u.github.io/ECCBinomialModel/docs/find/#doc/replicating_strategy" class="lean_decl">replicating_strategy</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
         </div>
   </div>
   <div class="definition_thmcontent">
-  <p>  A trading strategy \(\varphi = {\alpha , \beta }\) is a <em>replicating strategy</em> for an ECC \(\Phi \) if \(V_1(\varphi ) = \Phi \). </p>
+  <p>   A trading strategy \(\varphi = {\alpha , \beta }\) is a <em>replicating strategy</em> for an ECC \(\Phi \) if \(V_1(\varphi ) = \Phi \). </p>
 
   </div>
 </div>
@@ -989,10 +1273,29 @@
 
     
     
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://daz0u.github.io/ECCBinomialModel/docs/find/#doc/replication_existence" class="lean_decl">replication_existence</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
         </div>
   </div>
   <div class="theorem_thmcontent">
-  <p>  Under the arbitrage-free condition, every ECC \(\Phi \) has a replicating strategy. </p>
+  <p>   Under the arbitrage-free condition, every ECC \(\Phi \) has a replicating strategy. </p>
 
   </div>
 </div>
@@ -1059,10 +1362,29 @@
 
     
     
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://daz0u.github.io/ECCBinomialModel/docs/find/#doc/risk_neutral_pricing" class="lean_decl">risk_neutral_pricing</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
         </div>
   </div>
   <div class="theorem_thmcontent">
-  <p>  The initial value of the unique replicating strategy of an ECC \(\Phi \) is </p>
+  <p>   The initial value of the unique replicating strategy of an ECC \(\Phi \) is </p>
 <div class="displaymath" id="a0000000019">
   \[  V_0 = \frac{1}{1 + r}\, E^Q[\Phi ] = \frac{q\, \Phi _u + (1-q)\, \Phi _d}{1 + r}.  \]
 </div>
@@ -1118,10 +1440,29 @@
 
     
     
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://daz0u.github.io/ECCBinomialModel/docs/find/#doc/call_price" class="lean_decl">call_price</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
         </div>
   </div>
   <div class="corollary_thmcontent">
-  <p>  The arbitrage-free price of a European call option with strike \(K\) is </p>
+  <p>   The arbitrage-free price of a European call option with strike \(K\) is </p>
 <div class="displaymath" id="a0000000020">
   \[  V_0 = \frac{q\max (uS_0-K,\, 0) + (1-q)\max (dS_0-K,\, 0)}{1 + r}.  \]
 </div>
@@ -1167,10 +1508,29 @@
 
     
     
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://daz0u.github.io/ECCBinomialModel/docs/find/#doc/put_call_parity" class="lean_decl">put_call_parity</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
         </div>
   </div>
   <div class="corollary_thmcontent">
-  <p>  The prices of a European call \(C_0\) and put \(P_0\) with the same strike \(K\) satisfy <em>put-call parity</em>: </p>
+  <p>   The prices of a European call \(C_0\) and put \(P_0\) with the same strike \(K\) satisfy <em>put-call parity</em>: </p>
 <div class="displaymath" id="a0000000021">
   \[  C_0 - P_0 = S_0 - \frac{K}{1 + r}.  \]
 </div>
