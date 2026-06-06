@@ -1,258 +1,269 @@
-% In this file you should put the actual content of the blueprint.
-% It will be used both by the web and the print version.
-% It should *not* include the \begin{document}
-%
-% If you want to split the blueprint content into several files then
-% the current file can be a simple sequence of \input. Otherwise It
-% can start with a \section or \chapter for instance.
+/-
+Authors: Danny Zou
+-/
 
-\chapter{The One-Period Binomial Model for European Contingent Claims}
+import Mathlib
 
-\section{The Market}
+/-!
+# One-Period Binomial Model For European Contingent Claims
 
-\begin{definition}\label{def:parameters}
-    \uses{}
-    The initial \emph{market parameters} are defined by
-    \begin{itemize}
-        \item $S_0 > 0$, the initial price of the risky asset;
-        \item $u > 0$, the up factor;
-        \item $d > 0$, the down factor;
-        \item $r > -1$ such that the risk-free asset grows by a factor of $1 + r$ at each time step.
-    \end{itemize}
-    We note that $u$, $d$, and $r$ are fixed constants and the following relation must hold:
-    $u > d$ as the up factor must be greater than the down factor;
-\end{definition}
+In this file we introduce the one-period binomial model for pricing
+European Contingent Claims (ECC), a fundamental model to mathematical finance and
+the pricing of financial derivatives.
+We will show that under the one-period binomial model, the arbitrage-free model
+can be derived.
 
-\begin{definition}\label{def:sample_space}
-    \lean{Ω}
-    \uses{def:parameters}
-    The sample space for the ECC binomial model is $\Omega = \{u, d\}$, representing a single up or down move.
-    We apply the probability measure $P$ such that $P(\{u\}) > 0$ and $P(\{d\}) > 0$.
-\end{definition}
+## Main Definitions and Results
+- `filtration`: A filtration on the probability space defined by the one-period binomial model.
+- `trading_strategy`: A trading strategy in the one-period binomial model.
+- `arbitrage`: A definition of arbitrage.
+- `risk_neutral_measure`: A risk neutral measure in the one-period binomial model.
+- `call_price`: The arbitrage-free price of an ECC in the one-period binomial model.
+- 'put_call_parity': The relationship of the arbitrage-free prices of puts and calls in the model.
 
-\begin{definition}\label{def:binomialfiltration}
-    \lean{binomial_filtration}
-    \leanok
-    \uses{def:sample_space}
-    The filtration for the ECC binomial model is the natural filtration, defined as $\mathcal{F}^0_0 = \{\emptyset, \Omega\}$ and $\mathcal{F}^0_1 = 2^\Omega$.
-\end{definition}
+# References
+- https://mathweb.ucsd.edu/~williams/courses/m294notes/chap2.pdf
+-/
 
-\section{Asset Prices}
+structure parameters where
+  S₀ : ℝ
+  u : ℝ
+  d : ℝ
+  r : ℝ
+  hS₀ : S₀ > 0
+  hu : u > 0
+  hd : d > 0
+  hr : r > -1
+  hud : u > d
+  hdu : d ≤ u
 
-\begin{definition}\label{def:bond}
-    \lean{B₀, B₁}
-    \leanok
-    \uses{def:parameters}
-    The \emph{bond} is the risk-free asset, with price process defined by $B_0 = 1$ and $B_1 = 1 + r$.
-\end{definition}
+variable (p : parameters)
 
-\begin{definition}\label{def:stock}
-    \lean{S₁}
-    \leanok
-    \uses{def:parameters, def:sample_space, def:binomial_filtration}
-    The \emph{stock} is the risky asset, with price process defined by $S_0$ at time 0 and
-    \[
-        S_1(\omega) =
-        \begin{cases}
-            u S_0 & \text{if } \omega = u, \\
-            d S_0 & \text{if } \omega = d.
-        \end{cases}
-    \]
-\end{definition}
+abbrev Ω : Type := Bool
 
-\begin{definition}\label{def:trading_strategy}
-    \lean{trading_strategy}
-    \leanok
-    \uses{def:binomial_filtration}
-    A \emph{trading strategy} is a pair of $\mathcal{F}^0$-adapted processes $\varphi = (\alpha, \beta)$,
-    where $\alpha_t$ represents the number of shares of the stock held at time $t$ and $\beta_t$ represents the number of shares of the bond held at time $t$.
-    The value of the trading strategy at time $t$ is given by $V_t(\varphi) = \alpha_t S_t + \beta_t B_t$.
-\end{definition}
+open MeasureTheory
 
-\section{Arbitrage}
+instance : MeasurableSpace Ω := ⊤
 
-\begin{definition}\label{def:arbitrage}
-    \lean{arbitrage}
-    \leanok
-    \uses{def:trading_strategy, def:bond, def:stock}
-    There exists \emph{arbitrage} or equivalently an \emph{arbitrage opportunity} if there exists a trading strategy $\varphi = (\alpha, \beta)$ such that
-    \begin{itemize}
-        \item $V_0(\varphi) = 0$;
-        \item $V_1(\varphi) \geq 0$;
-        \item $E[V_1(\varphi)] > 0$.
-    \end{itemize}
-\end{definition}
+def binomial_filtration : Filtration (Fin 2) (⊤ : MeasurableSpace Ω) where
+  seq := fun i => if i = 0 then ⊥ else ⊤
+  mono' := by
+    intro i j hij
+    fin_cases i <;> fin_cases j <;> simp_all
+  le' := by
+    intro i
+    fin_cases i <;> simp
 
-\begin{definition}\label{def:arbitrage_free}
-    \lean{arbitrage_free}
-    \leanok
-    \uses{def:arbitrage}
-    The market is \emph{arbitrage-free} if there are no arbitrage opportunities.
-\end{definition}
+def B₀ : ℝ := 1
+def B₁ : ℝ := 1 + p.r
 
-\begin{definition}\label{def:risk_neutral_probability}
-    \lean{q}
-    \leanok
-    \uses{def:parameters, def:sample_space, def:binomial_filtration, def:bond, def:stock}
-    A \emph{risk-neutral probability} is a probability measure $q$ on $\Omega$ such that
-    \[
-        q = \frac{(1 + r) - d}{u - d}
-    \]
-\end{definition}
+def S₁ (ω : Ω) : ℝ :=
+  if ω then p.S₀ * p.u else p.S₀ * p.d
 
-\begin{lemma}\label{lem:arbitrage_free_condition}
-    \lean{arbitrage_free_condition}
-    \notready
-    \uses{def:parameters, def:arbitrage_free}
-    The market is arbitrage-free if and only if $d < 1 + r < u$.
-\end{lemma}
+structure trading_strategy where
+  α : ℝ
+  β : ℝ
 
-\begin{proof}
-    \begin{itemize}
-        \item ($\Rightarrow$) Assume the market is arbitrage-free. If $(1 + r) \leq d$, then define the trading strategy $\varphi = (\alpha, \beta)$ by $\alpha_0 = 1$, $\beta_0 = -S_0$.
-            Then $V_0(\varphi) = 0$ and $V_1(\varphi) = S_1 - S_0 (1 + r) \geq 0$ with positive probability. Thus, $E[V_1(\varphi)] > 0$, which contradicts the assumption of no arbitrage.
-            Similarly, if $(1 + r) \geq u$, then define the trading strategy $\varphi = (\alpha, \beta)$ by $\alpha_0 = -1$, $\beta_0 = S_0$.
-            Then $V_0(\varphi) = 0$ and $V_1(\varphi) = -S_1 + S_0 (1 + r) \geq 0$ with positive probability, leading to a similar contradiction.
-        \item ($\Leftarrow$) Assume $d < 1 + r < u$. Let $\varphi = (\alpha, \beta)$ be any trading strategy such that $V_0(\varphi) = 0$. Then $\beta_0 = -\alpha_0 S_0$ and
-            \[
-                V_1(\varphi) =
-                \begin{cases}
-                    \alpha_0 S_1 + \beta_0 S_0 (1 + r) = \alpha_0 S_0(u - (1 + r)) & \text{if } \omega = u,  \\
-                    \alpha_0 S_1 + \beta_0 S_0 (1 + r) = \alpha_0 S_0(d - (1 + r)) & \text{if } \omega = d.
-                \end{cases}
-            \]
-            Since $d < 1 + r < u$, we note that $V_1(\varphi) < 0$ with positive probability, so the market is arbitrage-free.
-        \end{itemize}
-\end{proof}
+def V₀ (φ : trading_strategy) : ℝ :=
+  φ.α * p.S₀ + φ.β * B₀
+def V₁ (φ : trading_strategy) (ω : Ω) : ℝ :=
+  φ.α * S₁ p ω + φ.β * B₁ p
 
-\begin{lemma}\label{lem:q_in_unit_interval}
-    \lean{q_in_unit_interval}
-    \leanok
-    \uses{def:risk_neutral_probability, def:parameters}
-    The risk-neutral probability $q$ is in the unit interval $(0, 1)$ if and only if $d < 1 + r < u$.
-\end{lemma}
+def arbitrage (φ : trading_strategy) : Prop :=
+  V₀ p φ = 0 ∧
+  (∀ ω : Ω, V₁ p φ ω ≥ 0) ∧
+  (∃ ω : Ω, V₁ p φ ω > 0)
 
-\begin{proof}
-    Follows directly from the definition of $q$ and the condition $d < 1 + r < u$.
-\end{proof}
+def arbitrage_free : Prop :=
+  ¬∃ φ : trading_strategy, arbitrage p φ
 
-\begin{definition}\label{def:risk_neutral_measure}
-  \lean{Q}
-  \leanok
-  \uses{def:risk_neutral_probability, def:sample_space}
-  The \emph{risk-neutral measure} $Q$ on $\Omega = \{u, d\}$ is defined by
-  $Q(\{u\}) = q$ and $Q(\{d\}) = 1 - q$.
-\end{definition}
+noncomputable def q : ℝ :=
+  ((1 + p.r) - p.d) / (p.u - p.d)
 
-\begin{lemma}\label{lem:q_is_prob_measure}
-  \lean{q_is_prob_measure}
-  \uses{def:risk_neutral_measure, lem:q_in_unit_interval}
-  $Q$ is a probability measure on $(\Omega, \mathcal{F})$.
-\end{lemma}
 
-\begin{proof}
-  \uses{lem:q_in_unit_interval}
-  We have $Q(\{u\}) + Q(\{d\}) = q + (1-q) = 1$ and both weights are in
-  $(0,1)$ by \ref{lem:q_in_unit_interval}.
-\end{proof}
+/-
+The arbitrage-free condition is a fundamental result in the one-period
+binomial model. It states that a stock has an arbitrage-free price if and only if
+the parameters satisfy the condition that
+  d < 1 + r < u
+Traditionally this is proven by simply noting two examples:
+- if d ≥ 1 + r, then we can short the bond and buy the stock
+- if 1 + r ≥ u, then we can short the stock and buy the bond
+However, in lean, proving the bijection is significantly harder
+than it is in pen-and-paper.
+For that reason, the last part of the proof (case mpr) is currently
+still using sorry, and I hope to work on it in the future.
+This lemma is not actually necessary for proofs of the later lemmas.
+-/
+lemma arbitrage_free_condition :
+    arbitrage_free p ↔ p.d < 1 + p.r ∧ 1 + p.r < p.u := by
+  constructor
+  contrapose
+  intro h
+  rw [not_and_or] at h
+  rcases h with hd | hu
+  · -- case mp.inl: d ≥ 1 + p.r
+    push Not at hd
+    unfold arbitrage_free
+    simp
+    unfold arbitrage
+    let φ : trading_strategy := ⟨1, -p.S₀⟩
+    have h1 : V₀ p φ = 0 := by
+      simp [V₀, B₀, φ]
+    have h2 : ∀ ω : Ω, V₁ p φ ω ≥ 0 := by
+      intro ω
+      simp only [V₁, S₁, B₁, φ]
+      by_cases hw : ω
+      · -- case ω = true: S₁ = S₀ * u
+        simp [hw]
+        have hu : 1 + p.r ≤ p.u := by
+          calc
+            1 + p.r ≤ p.d := by linarith [hd]
+            _ ≤ p.u := by apply p.hdu
+        exact mul_le_mul_of_nonneg_left hu (le_of_lt p.hS₀)
+      · -- case ω = false: S₁ = S₀ * d
+        simp [hw]
+        exact mul_le_mul_of_nonneg_left hd (le_of_lt p.hS₀)
+    have h3 : ∃ ω : Ω, V₁ p φ ω > 0 := by
+      use true
+      simp [V₁, S₁, B₁, φ]
+      apply mul_lt_mul_of_pos_left _ p.hS₀
+      calc
+        1 + p.r ≤ p.d := by apply hd
+        _ < p.u := by apply p.hud
+    exact ⟨φ, h1, h2, h3⟩
+  · -- case mp.inr: 1 + p.r ≥ u
+    push Not at hu
+    unfold arbitrage_free
+    simp
+    unfold arbitrage
+    let φ : trading_strategy := ⟨-1, p.S₀⟩
+    have h1 : V₀ p φ = 0 := by
+      simp [V₀, B₀, φ]
+    have h2 : ∀ ω : Ω, V₁ p φ ω ≥ 0 := by
+      intro ω
+      simp only [V₁, S₁, B₁, φ]
+      by_cases hw : ω
+      · -- case ω = true: S₁ = S₀ * u
+        simp [hw]
+        exact mul_le_mul_of_nonneg_left hu (le_of_lt p.hS₀)
+      · -- case ω = false: S₁ = S₀ * d
+        simp [hw]
+        have hd : p.d ≤ 1 + p.r := by
+          calc
+            p.d ≤ p.u := by apply p.hdu
+            _ ≤ 1 + p.r := by apply hu
+        exact mul_le_mul_of_nonneg_left hd (le_of_lt p.hS₀)
+    have h3 : ∃ ω : Ω, V₁ p φ ω > 0 := by
+      use false
+      simp [V₁, S₁, B₁, φ]
+      apply mul_lt_mul_of_pos_left _ p.hS₀
+      calc
+        p.d < p.u := by apply p.hud
+        _ ≤ 1 + p.r := by apply hu
+    exact ⟨φ, h1, h2, h3⟩
+  contrapose
+  unfold arbitrage_free arbitrage
+  intro h
+  simp only [not_not] at h
+  obtain ⟨φ, h1, h2, h3⟩ := h
+  simp only [not_and_or]
+  by_cases h : p.d < 1 + p.r
+  · simp only [h, not_true, false_or, not_lt]
+    unfold V₀ at h1
+    unfold V₁ at h2 h3
+    sorry
+  sorry
 
-\begin{lemma}\label{lem:discounted_stock_expectation}
-  \lean{discounted_stock_expectation}
-  \uses{def:risk_neutral_measure, def:stock, def:bond}
-  The discounted stock price satisfies
-  \[
-    E^Q\!\left[\frac{S_1}{1 + r}\right] = S_0.
-  \]
-\end{lemma}
+/-
+Proves that the risk-neutral probability q is in the unit interval.
+-/
+lemma q_in_unit_interval :
+    0 < q p ∧ q p < 1 ↔ p.d < 1 + p.r ∧ 1 + p.r < p.u := by
+  have ge0 : 0 < p.u - p.d := by
+          apply sub_pos_of_lt
+          apply p.hud
+  constructor
+  · intro h
+    unfold q at h
+    have h1 : p.d < 1 + p.r := by
+      have h1 : 0 < 1 + p.r - p.d := by
+        have h1_succ : (p.u - p.d) * 0 <  (p.u - p.d) * ((1 + p.r - p.d) / (p.u - p.d)) := by
+          exact mul_lt_mul_of_pos_left (h.1) ge0
+        simp only [mul_zero] at h1_succ
+        rw [mul_div_cancel₀] at h1_succ
+        · exact h1_succ
+        · exact ne_of_gt (sub_pos_of_lt p.hud)
+      grind
+    have h2 : 1 + p.r < p.u := by
+      have h2 : 1 + p.r - p.d < p.u - p.d := by
+        rw[div_lt_one] at h
+        · exact h.2
+        · exact ge0
+      rw[sub_lt_sub_iff_right] at h2
+      exact h2
+    exact ⟨h1, h2⟩
+  · intro h
+    unfold q
+    have h2 : 0 < (1 + p.r - p.d) / (p.u - p.d) := by
+      have h1 : 0 < (1 + p.r) - p.d := by
+        apply sub_pos_of_lt
+        exact h.1
+      have h2 : 0 / (p.u - p.d) < (1 + p.r - p.d) / (p.u - p.d) := by
+        apply div_lt_div_of_pos_right
+        · exact h1
+        · exact ge0
+      simp only [zero_div] at h2
+      exact h2
+    have h3 : (1 + p.r - p.d) / (p.u - p.d) < 1 := by
+      have h1 : 1 + p.r - p.d < p.u - p.d := by
+        rw[sub_lt_sub_iff_right]
+        exact h.2
+      rw[←div_lt_one] at h1
+      · exact h1
+      · exact ge0
+    exact ⟨h2, h3⟩
 
-\begin{proof}
-  \uses{def:risk_neutral_measure, def:stock, def:risk_neutral_probability}
-  Direct computation:
-  $E^Q[S_1/(1 + r)] = q \cdot u S_0 / (1 + r) + (1-q) \cdot d S_0 / (1 + r)
-  = S_0(qu + (1-q)d)/(1 + r) = S_0 \cdot (1 + r)/(1 + r) = S_0$.
-\end{proof}
+noncomputable def Q (ω : Ω) : ℝ :=
+  if ω then q p else 1 - q p
 
-\section{European Contingent Claims}
+lemma q_is_prob_measure (h : p.d < 1 + p.r ∧ 1 + p.r < p.u) :
+    Q p true + Q p false = 1 ∧ 0 < Q p true ∧ 0 < Q p false := by
+  sorry
 
-\begin{definition}\label{def:ecc}
-  \lean{ECC}
-  \leanok
-  \uses{def:sample_space}
-  A \emph{European Contingent Claim} (ECC) is a random variable
-  $\Phi : \Omega \to \mathbb{R}$. We write $\Phi_u = \Phi(u)$ and
-  $\Phi_d = \Phi(d)$ for its two possible payoffs.
-\end{definition}
+lemma discounted_stock_expectation (h : p.d < 1 + p.r ∧ 1 + p.r < p.u) :
+    Q p true * (S₁ p true / (1 + p.r)) + Q p false * (S₁ p false / (1 + p.r)) = p.S₀ := by
+  sorry
 
-\begin{example}\label{ex:european_call}
-  \uses{def:ecc, def:stock}
-  The \emph{European call option} with strike $K > 0$ has payoffs
-  $\Phi_u = \max(uS_0 - K, 0)$ and $\Phi_d = \max(dS_0 - K, 0)$.
-\end{example}
+abbrev ECC := Ω → ℝ
 
-\begin{example}\label{ex:european_put}
-  \uses{def:ecc, def:stock}
-  The \emph{European put option} with strike $K > 0$ has payoffs
-  $\Phi_u = \max(K - uS_0, 0)$ and $\Phi_d = \max(K - dS_0, 0)$.
-\end{example}
+def replicating_strategy (φ : trading_strategy) (Φ : ECC) : Prop :=
+  ∀ ω : Ω, V₁ p φ ω = Φ ω
 
-\section{Replicating Strategies}
+theorem replication_existence (Φ : ECC) (h : p.d < 1 + p.r ∧ 1 + p.r < p.u) :
+    ∃ φ : trading_strategy, replicating_strategy p φ Φ := by
+  sorry
 
-\begin{definition}\label{def:replicating_strategy}
-    \lean{replicating_strategy}
-    \leanok
-    \uses{def:trading_strategy, def:ecc}
-    A trading strategy $\varphi = {\alpha, \beta}$ is a \emph{replicating strategy} for an ECC $\Phi$ if $V_1(\varphi) = \Phi$.
-\end{definition}
+theorem risk_neutral_pricing (Φ : ECC) (φ : trading_strategy)
+    (hrep : replicating_strategy p φ Φ) (h : p.d < 1 + p.r ∧ 1 + p.r < p.u) :
+    V₀ p φ = (Q p true * Φ true + Q p false * Φ false) / (1 + p.r) := by
+  sorry
 
-\begin{theorem}\label{thm:replication_existence}
-    \lean{replication_existence}
-    \uses{def:replicating_strategy, lem:arbitrage_free_condition}
-    Under the arbitrage-free condition, every ECC $\Phi$ has a replicating strategy.
-\end{theorem}
+noncomputable def call_value (K : ℝ) : ECC :=
+  fun ω => max (S₁ p ω - K) 0
 
-\begin{proof}
-  \uses{def:replicating_strategy, lem:arbitrage_free_condition}
-  The replication conditions form a linear system in $(\alpha, \beta)$
-  whose coefficient matrix has determinant $(u - d)S_0 (1 + r) \neq 0$ by
-  \ref{lem:arbitrage_free_condition}. Solving by substitution yields the
-  stated formulas.
-\end{proof}
+lemma call_price (K : ℝ) (φ : trading_strategy)
+    (hrep : replicating_strategy p φ (call_value p K)) (h : p.d < 1 + p.r ∧ 1 + p.r < p.u) :
+    V₀ p φ = (Q p true * max (p.u * p.S₀ - K) 0 +
+              Q p false * max (p.d * p.S₀ - K) 0) / (1 + p.r) := by
+  sorry
 
-\section{Pricing}
+noncomputable def put_value (K : ℝ) : ECC :=
+  fun ω => max (K - S₁ p ω) 0
 
-\begin{theorem}\label{thm:risk_neutral_pricing}
-  \lean{risk_neutral_pricing}
-  \uses{thm:replication_existence, def:risk_neutral_measure,
-        def:ecc, def:trading_strategy}
-  The initial value of the unique replicating strategy of an ECC $\Phi$ is
-  \[
-    V_0 = \frac{1}{1 + r}\,E^Q[\Phi] = \frac{q\,\Phi_u + (1-q)\,\Phi_d}{1 + r}.
-  \]
-\end{theorem}
-
-\begin{proof}
-  \uses{thm:replication_existence, def:risk_neutral_probability,
-        def:risk_neutral_measure}
-  Substituting the formulas from \ref{thm:replication_existence} into
-  $V_0 = \alpha S_0 + \beta$ and simplifying using $q = ((1 + r) - d)/(u - d)$
-  yields $V_0 = (q\Phi_u + (1-q)\Phi_d)/(1 + r) = E^Q[\Phi]/(1 + r)$.
-\end{proof}
-
-\begin{corollary}\label{cor:call_price}
-  \lean{call_price}
-  \uses{thm:risk_neutral_pricing, ex:european_call}
-  The arbitrage-free price of a European call option with strike $K$ is
-  \[
-    V_0 = \frac{q\max(uS_0-K,\,0) + (1-q)\max(dS_0-K,\,0)}{1 + r}.
-  \]
-\end{corollary}
-
-\begin{corollary}\label{cor:put_call_parity}
-  \lean{put_call_parity}
-  \uses{thm:risk_neutral_pricing, ex:european_call, ex:european_put}
-  The prices of a European call $C_0$ and put $P_0$ with the same strike
-  $K$ satisfy \emph{put-call parity}:
-  \[
-    C_0 - P_0 = S_0 - \frac{K}{1 + r}.
-  \]
-\end{corollary}
+lemma put_call_parity (K : ℝ) (φ_c φ_p : trading_strategy)
+    (hrep_c : replicating_strategy p φ_c (call_value p K))
+    (hrep_p : replicating_strategy p φ_p (put_value p K))
+    (h : p.d < 1 + p.r ∧ 1 + p.r < p.u) :
+    V₀ p φ_c - V₀ p φ_p = p.S₀ - K / (1 + p.r) := by
+  sorry
